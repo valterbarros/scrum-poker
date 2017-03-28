@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe Task, type: [:models, :task] do
+describe User, type: [:models, :task] do
   let(:user) { create :user, name: name }
-  let(:name) { "valter" }
+  let(:name) { "Valter" }
   context 'When all params are valid' do
     it 'Would create new user' do
       expect { 
@@ -17,7 +17,7 @@ describe Task, type: [:models, :task] do
      end
      it 'Should not create a new user' do
        expect {
-         User.create(name:"valter")
+         User.create()
        }.to change(User, :count).by(0)
      end
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328194437) do
+ActiveRecord::Schema.define(version: 20170329122528) do
 
   create_table "session_votes", force: :cascade do |t|
     t.boolean  "closed",     default: false
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20170328194437) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users_session_votes", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "session_vote_id"
+    t.index ["session_vote_id"], name: "index_users_session_votes_on_session_vote_id"
+    t.index ["user_id"], name: "index_users_session_votes_on_user_id"
   end
 
 end

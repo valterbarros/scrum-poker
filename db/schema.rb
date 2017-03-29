@@ -10,12 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329122528) do
+ActiveRecord::Schema.define(version: 20170329190855) do
 
   create_table "session_votes", force: :cascade do |t|
     t.boolean  "closed",     default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "session_votes_tasks", force: :cascade do |t|
+    t.string   "time"
+    t.integer  "task_id"
+    t.integer  "session_vote_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["session_vote_id"], name: "index_session_votes_tasks_on_session_vote_id"
+    t.index ["task_id"], name: "index_session_votes_tasks_on_task_id"
+  end
+
+  create_table "session_votes_users", force: :cascade do |t|
+    t.string   "score"
+    t.integer  "user_id"
+    t.integer  "session_vote_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["session_vote_id"], name: "index_session_votes_users_on_session_vote_id"
+    t.index ["user_id"], name: "index_session_votes_users_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -31,11 +51,16 @@ ActiveRecord::Schema.define(version: 20170329122528) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users_session_votes", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "session_vote_id"
-    t.index ["session_vote_id"], name: "index_users_session_votes_on_session_vote_id"
-    t.index ["user_id"], name: "index_users_session_votes_on_user_id"
+  create_table "votes", force: :cascade do |t|
+    t.float    "vote"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "session_vote_id"
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.index ["session_vote_id"], name: "index_votes_on_session_vote_id"
+    t.index ["task_id"], name: "index_votes_on_task_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end

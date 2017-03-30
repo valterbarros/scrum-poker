@@ -12,30 +12,30 @@
 
 ActiveRecord::Schema.define(version: 20170329190855) do
 
-  create_table "session_votes", force: :cascade do |t|
-    t.boolean  "closed",     default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  create_table "session_votes_tasks", force: :cascade do |t|
+  create_table "session_vote_tasks", force: :cascade do |t|
     t.string   "time"
     t.integer  "task_id"
     t.integer  "session_vote_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["session_vote_id"], name: "index_session_votes_tasks_on_session_vote_id"
-    t.index ["task_id"], name: "index_session_votes_tasks_on_task_id"
+    t.index ["session_vote_id"], name: "index_session_vote_tasks_on_session_vote_id"
+    t.index ["task_id"], name: "index_session_vote_tasks_on_task_id"
   end
 
-  create_table "session_votes_users", force: :cascade do |t|
+  create_table "session_vote_users", force: :cascade do |t|
     t.string   "score"
     t.integer  "user_id"
     t.integer  "session_vote_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["session_vote_id"], name: "index_session_votes_users_on_session_vote_id"
-    t.index ["user_id"], name: "index_session_votes_users_on_user_id"
+    t.index ["session_vote_id"], name: "index_session_vote_users_on_session_vote_id"
+    t.index ["user_id"], name: "index_session_vote_users_on_user_id"
+  end
+
+  create_table "session_votes", force: :cascade do |t|
+    t.boolean  "closed",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "tasks", force: :cascade do |t|

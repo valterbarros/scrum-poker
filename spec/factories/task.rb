@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :task do
-    title "Cadastrar task"
+    title 
     description "cadastrar task"
   end
 end

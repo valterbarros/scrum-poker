@@ -9,7 +9,7 @@ describe TasksController, '#create' , type: [:controller,:task]  do
   end
 
   context 'When try create a already created task' do
-    let(:task) { create :task, title: title }
+    let(:task) { create± :task, title: title }
     let(:setup) { task }
     it 'Should render new view' do
       expect(response).to render_template("new")

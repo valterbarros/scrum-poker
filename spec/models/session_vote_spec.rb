@@ -43,4 +43,7 @@ describe SessionVote, type:[:models,:session_vote] do
       }.to raise_error ActiveRecord::RecordInvalid 
     end
   end
+
+  context 'When user try close a session_vote' do
+  end
 end

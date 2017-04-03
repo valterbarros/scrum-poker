@@ -36,7 +36,7 @@ describe SessionVote, type:[:models,:session_vote] do
       session_close = Validators::AddUserSessionVote.new(closed:session_vote.closed, users:[user])
       expect(
         session_vote.valid?
-      ).to be true 
+      ).to be_truthy 
     end
     it 'When session_vote is closed' do
       session_vote.update(closed:true)
@@ -70,11 +70,13 @@ describe SessionVote, type:[:models,:session_vote] do
       }.to raise_error ActiveRecord::RecordInvalid
     end
 
-    let(:session_vote) { create :session_vote, tasks: [task], users: [user] }
-    it 'When try close a session with user and tasks' do
+    let(:session_vote) { create :session_vote, tasks: [task], users: [user], votes: [Vote.create(vote:5)] }
+    it 'When try close a session with user and tasks and votes' do
+      require 'pry'; binding.pry
+      cs = Validators::CloseSessionVote.new(users:session_vote.users, tasks:session_vote.tasks, votes:session_vote.votes)
       expect{
-        session_vote
-      }.to raise_error ActiveRecord::RecordInvalid
+        cs.valid?
+      }.to be true
     end
 
     it 'When try close a session withou any votes' do

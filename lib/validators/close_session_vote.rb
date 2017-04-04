@@ -14,7 +14,7 @@ module Validators
     private
     attr_accessor :users, :tasks, :votes
     def can_close_session_vote
-      self.errors.add(session_vote: "Can't close session") unless verify_attrs
+      self.errors.add(session_vote: "Can't close session") if verify_attrs
     end
 
     def verify_attrs

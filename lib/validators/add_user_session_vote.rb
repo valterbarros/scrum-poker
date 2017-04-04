@@ -17,5 +17,9 @@ module Validators
     def session_closed
       self.errors.add(:session_vote, "Can't add user on session closed") if @closed && @users
     end
+
+    def has_users
+      @users != nil
+    end
   end
 end

@@ -13,4 +13,3 @@ session_vote.tasks = [task, Task.create(title:"hello darkness my old friend")]
 session_vote.users = [user1, user2]
 vote = Vote.create(vote:4, session_vote:session_vote, task:task, user:user1)
 vote = Vote.create(vote:8, session_vote:session_vote, task:task, user:user2)
-

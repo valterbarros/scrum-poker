@@ -17,30 +17,70 @@ describe SessionVote, type:[:models,:session_vote] do
     let(:tasks) { [] }
     let(:session_vote_with_error) { build :session_vote, tasks: tasks }
     it 'create a new object session_vote without tasks' do
-      expect{
-        session_vote
-      }.to raise_error ActiveRecord::RecordInvalid
+      expect(
+        Validators::CreateSessionVote.new(tasks: []).valid?
+      ).to be false 
     end
 
-    it 'should result errors' do
-      session_vote_with_error.valid?
-      expect(session_vote_with_error.errors.messages[:tasks].first).to eq "can't be blank"
+    it 'create a new object session_vote with tasks' do
+      expect(
+        Validators::CreateSessionVote.new(tasks:[Task.first]).valid?
+      ).to be true
     end
   end
 
   context 'When user try enter on session_vote' do
     let(:user) { create :user }
     it 'When session_vote is open' do
-    expect{
-      session_vote
-    }.to change(SessionVote, :count).by(1)
+      session_vote.update(users:[user])
+      session_close = Validators::AddUserSessionVote.new(closed:session_vote.closed, users:[user])
+      expect(
+        session_vote.valid?
+      ).to be_truthy 
     end
     it 'When session_vote is closed' do
       session_vote.update(closed:true)
+      session_close = Validators::AddUserSessionVote.new(closed:session_vote.closed, users:[user])
+      expect(
+        session_close.valid?  
+      ).to be false
+    end
+  end
+
+  context 'When try close a session' do
+    let(:user) { create :user }
+    let(:session_vote) { create :session_vote}
+    it 'When try close a session without users and tasks' do
       expect{
-        require 'pry'; binding.pry
-        session_vote.update(users:[user])
-      }.to raise_error ActiveRecord::RecordInvalid 
+        session_vote
+      }.to raise_error ActiveRecord::RecordInvalid
+    end
+
+    let(:session_vote) { create :session_vote, tasks: [task], users: [] }
+    it 'When try close a session without user' do
+      expect{
+        session_vote
+      }.to raise_error ActiveRecord::RecordInvalid
+    end
+
+    let(:session_vote) { create :session_vote, tasks: [], users: [user] }
+    it 'When try close a session without task' do
+      expect{
+        session_vote
+      }.to raise_error ActiveRecord::RecordInvalid
+    end
+
+    let(:session_vote) { create :session_vote, tasks: [task], users: [user], votes: [Vote.create(vote:5)] }
+    it 'When try close a session with user and tasks and votes' do
+      require 'pry'; binding.pry
+      cs = Validators::CloseSessionVote.new(users:session_vote.users, tasks:session_vote.tasks, votes:session_vote.votes)
+      expect{
+        cs.valid?
+      }.to be true
+    end
+
+    it 'When try close a session withou any votes' do
+
     end
   end
 

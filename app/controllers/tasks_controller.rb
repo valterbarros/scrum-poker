@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
+  after_action :print_accessed_fields, only: :index
+
   def index
-    @task = Task.all
+    @tasks = Task.all.map {|task| TaskPresenter.new(task) }
   end
 
   def show
@@ -20,6 +22,10 @@ class TasksController < ApplicationController
   end
 
   private
+  def print_accessed_fields
+    p @tasks.first.accessed_fields
+  end
+
   def task_params
     params.require(:task_params).permit(:title,:description)
   end

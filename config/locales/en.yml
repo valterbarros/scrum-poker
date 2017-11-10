@@ -21,3 +21,4 @@
 
 en:
   hello: "Hello world"
+  cant_add_user_to_session_vote: "Can't add user on session closed" 

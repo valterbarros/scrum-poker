@@ -72,7 +72,6 @@ describe SessionVote, type:[:models,:session_vote] do
 
     let(:session_vote) { create :session_vote, tasks: [task], users: [user], votes: [Vote.create(vote:5)] }
     it 'When try close a session with user and tasks and votes' do
-      require 'pry'; binding.pry
       cs = Validators::CloseSessionVote.new(users:session_vote.users, tasks:session_vote.tasks, votes:session_vote.votes)
       expect{
         cs.valid?

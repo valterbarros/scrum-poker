@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20170330134919) do
 
-  create_table "session_votes", force: :cascade do |t|
-    t.boolean  "closed",     default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "session_votes", id: :serial, force: :cascade do |t|
+    t.boolean "closed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "session_votes_tasks", id: false, force: :cascade do |t|
@@ -32,26 +35,26 @@ ActiveRecord::Schema.define(version: 20170330134919) do
     t.index ["user_id"], name: "index_session_votes_users_on_user_id"
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
+  create_table "tasks", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "votes", force: :cascade do |t|
-    t.float    "vote"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "session_vote_id"
-    t.integer  "user_id"
-    t.integer  "task_id"
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "votes", id: :serial, force: :cascade do |t|
+    t.float "vote"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "session_vote_id"
+    t.integer "user_id"
+    t.integer "task_id"
     t.index ["session_vote_id"], name: "index_votes_on_session_vote_id"
     t.index ["task_id"], name: "index_votes_on_task_id"
     t.index ["user_id"], name: "index_votes_on_user_id"

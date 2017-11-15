@@ -10,83 +10,93 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Planning of Thrones</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="container">
+      <div class="row">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Planning of Thrones</a>
+            </div>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notification (<b>2</b>)</a>
-            <ul class="dropdown-menu notify-drop">
-              <div class="notify-drop-title">
-                <div class="row">
-                  <div class="col-md-6 col-sm-6 col-xs-6">Bildirimler (<b>2</b>)</div>
-                  <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
-                </div>
-              </div>
-              <!-- end notify title -->
-              <!-- notify content -->
-              <div class="drop-content">
-                <li>
-                  <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
-                  <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Sessions</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notifications (<b>2</b>)</a>
+                  <ul class="dropdown-menu notify-drop">
+                    <div class="notify-drop-title">
+                      <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">Bildirimler (<b>2</b>)</div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+                      </div>
+                    </div>
+                    <!-- end notify title -->
+                    <!-- notify content -->
+                    <div class="drop-content">
+                      <li>
+                        <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
 
-                    <hr>
-                    <p class="time">Şimdi</p>
-                  </div>
+                          <hr>
+                          <p class="time">Şimdi</p>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
+                          <p>Lorem ipsum sit dolor amet consilium.</p>
+                          <p class="time">1 Saat önce</p>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
+                          <p>Lorem ipsum sit dolor amet consilium.</p>
+                          <p class="time">29 Dakika önce</p>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
+                          <p>Lorem ipsum sit dolor amet consilium.</p>
+                          <p class="time">Dün 13:18</p>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
+                          <p>Lorem ipsum sit dolor amet consilium.</p>
+                          <p class="time">2 Hafta önce</p>
+                        </div>
+                      </li>
+                    </div>
+                    <div class="notify-drop-footer text-center">
+                      <a href=""><i class="fa fa-eye"></i> Tümünü Göster</a>
+                    </div>
+                  </ul>
                 </li>
-                <li>
-                  <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
-                  <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
-                    <p>Lorem ipsum sit dolor amet consilium.</p>
-                    <p class="time">1 Saat önce</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
-                  <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
-                    <p>Lorem ipsum sit dolor amet consilium.</p>
-                    <p class="time">29 Dakika önce</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
-                  <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
-                    <p>Lorem ipsum sit dolor amet consilium.</p>
-                    <p class="time">Dün 13:18</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
-                  <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
-                    <p>Lorem ipsum sit dolor amet consilium.</p>
-                    <p class="time">2 Hafta önce</p>
-                  </div>
-                </li>
-              </div>
-              <div class="notify-drop-footer text-center">
-                <a href=""><i class="fa fa-eye"></i> Tümünü Göster</a>
-              </div>
-            </ul>
-          </li>
-        </ul>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
       </div>
-    </nav>
+    </div>
     <script>
       $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-      })
+        $('[data-tooltip="tooltip"]').tooltip()
+      });
     </script>
     <%= yield %>
   </body>

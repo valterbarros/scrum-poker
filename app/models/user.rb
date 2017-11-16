@@ -5,8 +5,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :name, presence: true 
-  
-  has_and_belongs_to_many :session_votes
   has_many :votes
+  has_many :notifications
+  has_many :invitations, class_name: 'Invite', foreign_key: 'recipient_id'
+  has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
+
+  belongs_to :session_vote
+
+  validates :name, presence: true 
 end

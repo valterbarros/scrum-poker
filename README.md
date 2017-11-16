@@ -31,3 +31,10 @@ You must have redis installed and running on the default port:6379 (or configure
 3. redis-server
 4. rails s
 5. Visit `http://localhost:3000`
+
+### Contributig
+##### Branch name
+
+  The name is composed by initials from your name (Valter Barros = VB), count of branch 01 is the my first branch, and a random number 58.
+
+  `eg: feature/VB0158-create-models-migrations-and-relations`

@@ -6,7 +6,6 @@ env:
 services:
   - postgresql
 before_script:
-  - RAILS_ENV=test bundle exec rake db:create
   - RAILS_ENV=test bundle exec rake db:migrate
   - psql -c 'create database test;' -U postgres
 script:

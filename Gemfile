@@ -46,6 +46,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'dotenv-rails'
+  gem 'database_cleaner'
 end
 
 group :development do

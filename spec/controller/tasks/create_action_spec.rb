@@ -2,9 +2,11 @@ require 'rails_helper'
 
 describe TasksController, '#create' , type: [:controller,:task]  do
   let(:setup) {  }
+  let(:user) { create(:user) }
   let(:title) { "Some Title" }
   before do
     setup
+    sign_in user
     post :create, { task_params: { title: title, description: "permitindo" } }
   end
 

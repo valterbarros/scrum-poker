@@ -1,6 +1,7 @@
 class CreateSessionVote < ActiveRecord::Migration[5.0]
   def change
     create_table :session_votes do |t|
+      t.string :title
       t.integer :status, default: 0
       
       t.timestamps

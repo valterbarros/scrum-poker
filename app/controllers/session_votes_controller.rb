@@ -1,0 +1,3 @@
+class SessionVotesController < ApplicationController
+
+end

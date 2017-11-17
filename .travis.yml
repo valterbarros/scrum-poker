@@ -7,7 +7,7 @@ services:
   - postgresql
 # before_script:
 #   - RAILS_ENV=test bundle exec rake db:migrate
-  - psql -c "create database test WITH PASSWORD 'test';" -U postgres
+  - psql -c "create database travis';" -U postgres
 script:
   - cp config/database.yml
   - bundle exec rspec spec

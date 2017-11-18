@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/valterbarros/scrum-poker.svg?branch=master)](https://travis-ci.org/valterbarros/scrum-poker)
 
 ### Modeling Scrum Poker
 

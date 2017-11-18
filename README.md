@@ -10,6 +10,16 @@
 * Postgres >= 9.5
 
 You must have redis installed and running on the default port:6379 (or configure it in config/redis/cable.yml).
+##### Add this .env to your clone or fork
+
+```
+DATABASE_HOST='localhost'
+DATABASE_USERNAME='REPLACE WITH YOUR DATA'
+DATABASE_PASSWORD='REPLACE WITH YOUR DATA'
+DATABASE_NAME='planning_of_thrones_development'
+DATABASE_TEST_NAME='planning_of_thrones_test'
+DATABASE_PORT=5433
+```
 
 ### Installing Redis
 ##### On Linux

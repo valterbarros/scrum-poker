@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20171116022344) do
   end
 
   create_table "notifications", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 20171116022344) do
   end
 
   create_table "session_votes", id: :serial, force: :cascade do |t|
+    t.string "title"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

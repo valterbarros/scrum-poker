@@ -8,6 +8,7 @@ class RoomsController < ApplicationController
   def show
     @invite = Invite.new
     @users = User.all
+    render action: :room_owner_session
   end
 
   private

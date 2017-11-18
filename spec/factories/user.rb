@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :user do
     name "Valter"
-    email "valter@gmail.com"
+    sequence(:email) { |n| "user#{n}@game.com.br" }
     password 123456 
-    session_vote { FactoryGirl.create(:session_vote) }
+    #session_vote { FactoryGirl.build(:session_vote) }
   end
 end

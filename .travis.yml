@@ -6,8 +6,9 @@ env:
 services:
   - postgresql
 before_script:
-  - psql -c "create database travis;" -U postgres
+  - bundle install
+  - RAILS_ENV=test bundle exec rake db:create
   - RAILS_ENV=test bundle exec rake db:migrate
+dist: trusty
 script:
-  - cp config/database.yml
   - bundle exec rspec spec

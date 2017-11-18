@@ -1,4 +1,4 @@
 <% @session_votes.each do |session|  %>
   <p>Created_at: <%= session.created_at  %></p>
-  <%= link_to "Enter"  %>
+  <%= link_to "Enter", room_path(session.id)  %>
 <% end %>

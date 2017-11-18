@@ -3,6 +3,8 @@ rvm:
   - 2.4.2
 env:
   - DB =pgsql
+  - DATABASE_NAME=planning_of_thrones_development
+  - DATABASE_TEST_NAME=planning_of_thrones_test
 services:
   - postgresql
 before_script:

@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1><%= @session_vote.title %> <small>Session Vote</small> </h1>
+</div>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="card-container">
+      <div class="col-lg-2 col-md-3 col-xs-4">
+        <div class="card-container">
+          <div class="card selectable active confirmed">
+            <div class="inner">
+              <span class="card-label">15</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Invite a new user for your session vote</div>
+      <div class="panel-body">
+        <%= form_with model: @invite do |f| %>
+          <%= f.hidden_field :session_vote_id, value: params[:id]  %>
+          <%= f.label :recipient %>
+          <%= f.collection_select(:recipient_id, @users, :id, :email, {}, { class: "form-control" } )  %>
+          <%= f.submit "Send a Invite", class:"btn btn-success"  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

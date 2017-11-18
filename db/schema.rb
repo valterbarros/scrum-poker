@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20171116022344) do
 
   create_table "invites", force: :cascade do |t|
     t.bigint "session_vote_id"
-    t.integer "recipient_id"
-    t.integer "sender_id"
+    t.integer "recipient_id", null: false
+    t.integer "sender_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id"], name: "index_invites_on_recipient_id"
@@ -68,8 +68,10 @@ ActiveRecord::Schema.define(version: 20171116022344) do
   create_table "session_votes", id: :serial, force: :cascade do |t|
     t.string "title"
     t.integer "status", default: 0
+    t.integer "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_session_votes_on_owner_id"
   end
 
   create_table "steps", force: :cascade do |t|
@@ -125,7 +127,10 @@ ActiveRecord::Schema.define(version: 20171116022344) do
   add_foreign_key "categories_tasks", "categories"
   add_foreign_key "categories_tasks", "tasks"
   add_foreign_key "invites", "session_votes"
+  add_foreign_key "invites", "users", column: "recipient_id"
+  add_foreign_key "invites", "users", column: "sender_id"
   add_foreign_key "notifications", "users"
+  add_foreign_key "session_votes", "users", column: "owner_id"
   add_foreign_key "steps", "session_votes"
   add_foreign_key "tasks", "session_votes"
   add_foreign_key "users", "session_votes"

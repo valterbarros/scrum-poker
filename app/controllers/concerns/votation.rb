@@ -1,7 +1,7 @@
 module Votation
   extend ActiveSupport::Concern
 
-  def remaing_votes
+  def start_remaing_votes
     session_vote = SessionVote.find(current_session_vote_id)
     session[:remaing_votes] = session_vote.users.count
   end

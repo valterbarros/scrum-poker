@@ -29,8 +29,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Sessions</a></li>
+                <li><a href="<%= rooms_path  %>">Sessions</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -47,38 +46,10 @@
                     <div class="drop-content">
                       <li>
                         <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
+                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href=""><%= Notification.last.title  %></a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
 
                           <hr>
-                          <p class="time">Şimdi</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
-                          <p>Lorem ipsum sit dolor amet consilium.</p>
-                          <p class="time">1 Saat önce</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
-                          <p>Lorem ipsum sit dolor amet consilium.</p>
-                          <p class="time">29 Dakika önce</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
-                          <p>Lorem ipsum sit dolor amet consilium.</p>
-                          <p class="time">Dün 13:18</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a href="">Ahmet</a> yorumladı. <a href="">Çicek bahçeleri...</a> <a href="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
-                          <p>Lorem ipsum sit dolor amet consilium.</p>
-                          <p class="time">2 Hafta önce</p>
+                          <p class="time"><%= Notification.last.body  %></p>
                         </div>
                       </li>
                     </div>

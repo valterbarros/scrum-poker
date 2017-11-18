@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: "devise/sessions#new"
   end
-  resources :rooms, only: [:index]
+  resources :rooms, only: [:index, :show]
+  resources :invites, only: [:create]
 end

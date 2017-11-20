@@ -1,77 +1,13 @@
 <div class="row">
-  <div class="row ng-scope">
-    <!-- ngRepeat: card in member.cards --><div class="col-lg-2 col-md-3 col-xs-4 ng-scope" ng-repeat="card in member.cards">
+  <% cards.each do |card|  %>
+    <div class="col-lg-2 col-md-3 col-xs-4">
       <div class="card-container">
-        <div class="card selectable" ng-class="{active: card.active, confirmed: card.confirmed}" ng-click="member.selectCard(card)">
+        <div class="card selectable">
           <div class="inner">
-            <span class="card-label ng-binding" ng-bind-html="card.value">1</span>
+            <span class="card-label"><%= card.title  %></span>
           </div>
         </div>
       </div>
-      </div><!-- end ngRepeat: card in member.cards --><div class="col-lg-2 col-md-3 col-xs-4 ng-scope" ng-repeat="card in member.cards">
-      <div class="card-container">
-        <div class="card selectable" ng-class="{active: card.active, confirmed: card.confirmed}" ng-click="member.selectCard(card)">
-          <div class="inner">
-            <span class="card-label ng-binding" ng-bind-html="card.value">2</span>
-          </div>
-        </div>
-      </div>
-      </div><!-- end ngRepeat: card in member.cards --><div class="col-lg-2 col-md-3 col-xs-4 ng-scope" ng-repeat="card in member.cards">
-      <div class="card-container">
-        <div class="card selectable" ng-class="{active: card.active, confirmed: card.confirmed}" ng-click="member.selectCard(card)">
-          <div class="inner">
-            <span class="card-label ng-binding" ng-bind-html="card.value">3</span>
-          </div>
-        </div>
-      </div>
-      </div><!-- end ngRepeat: card in member.cards --><div class="col-lg-2 col-md-3 col-xs-4 ng-scope" ng-repeat="card in member.cards">
-      <div class="card-container">
-        <div class="card selectable" ng-class="{active: card.active, confirmed: card.confirmed}" ng-click="member.selectCard(card)">
-          <div class="inner">
-            <span class="card-label ng-binding" ng-bind-html="card.value">5</span>
-          </div>
-        </div>
-      </div>
-      </div><!-- end ngRepeat: card in member.cards --><div class="col-lg-2 col-md-3 col-xs-4 ng-scope" ng-repeat="card in member.cards">
-      <div class="card-container">
-        <div class="card selectable" ng-class="{active: card.active, confirmed: card.confirmed}" ng-click="member.selectCard(card)">
-          <div class="inner">
-            <span class="card-label ng-binding" ng-bind-html="card.value">8</span>
-          </div>
-        </div>
-      </div>
-      </div><!-- end ngRepeat: card in member.cards --><div class="col-lg-2 col-md-3 col-xs-4 ng-scope" ng-repeat="card in member.cards">
-      <div class="card-container">
-        <div class="card selectable" ng-class="{active: card.active, confirmed: card.confirmed}" ng-click="member.selectCard(card)">
-          <div class="inner">
-            <span class="card-label ng-binding" ng-bind-html="card.value">13</span>
-          </div>
-        </div>
-      </div>
-      </div><!-- end ngRepeat: card in member.cards --><div class="col-lg-2 col-md-3 col-xs-4 ng-scope" ng-repeat="card in member.cards">
-      <div class="card-container">
-        <div class="card selectable" ng-class="{active: card.active, confirmed: card.confirmed}" ng-click="member.selectCard(card)">
-          <div class="inner">
-            <span class="card-label ng-binding" ng-bind-html="card.value">20</span>
-          </div>
-        </div>
-      </div>
-      </div><!-- end ngRepeat: card in member.cards --><div class="col-lg-2 col-md-3 col-xs-4 ng-scope" ng-repeat="card in member.cards">
-      <div class="card-container">
-        <div class="card selectable" ng-class="{active: card.active, confirmed: card.confirmed}" ng-click="member.selectCard(card)">
-          <div class="inner">
-            <span class="card-label ng-binding" ng-bind-html="card.value">40</span>
-          </div>
-        </div>
-      </div>
-      </div><!-- end ngRepeat: card in member.cards --><div class="col-lg-2 col-md-3 col-xs-4 ng-scope" ng-repeat="card in member.cards">
-      <div class="card-container">
-        <div class="card selectable" ng-class="{active: card.active, confirmed: card.confirmed}" ng-click="member.selectCard(card)">
-          <div class="inner">
-            <span class="card-label ng-binding" ng-bind-html="card.value">?</span>
-          </div>
-        </div>
-      </div>
-    </div><!-- end ngRepeat: card in member.cards -->
-  </div>
+    </div>
+  <% end  %>
 </div>

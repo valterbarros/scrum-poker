@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20171116022344) do
   end
 
   create_table "steps", force: :cascade do |t|
+    t.string "title"
     t.bigint "session_vote_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

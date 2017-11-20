@@ -8,6 +8,7 @@ class RoomsController < ApplicationController
   def show
     @invite = Invite.new
     @users = User.all
+    @steps = @session_vote.steps
     render action: :room_user
   end
 

@@ -2,31 +2,22 @@
   <h1><%= @session_vote.title %> <small>You need click on card to vote!</small> </h1>
 </div>
 
-<h1 class="steps-title">Steps</h1>
 <div class="steps-group">
   <div class="row bs-wizard" style="border-bottom:0;">
-
-    <div class="col-md-<%= 12 / 2 %> bs-wizard-step complete">
-      <div class="text-center bs-wizard-stepnum">Dificuldade</div>
-      <div class="progress"><div class="progress-bar"></div></div>
-      <a href="#" class="bs-wizard-dot" step="1"></a>
-    </div>
-
-    <div class="col-md-<%= 12 / 2 %> bs-wizard-step "><!-- complete -->
-      <div class="text-center bs-wizard-stepnum">Horas</div>
-      <div class="progress"><div class="progress-bar"></div></div>
-      <a href="#" class="bs-wizard-dot" step="2"></a>
-    </div>
-
+    <% @steps.each_with_index do |step, index|  %>
+      <div class="col-md-<%= 12 / 2 %> bs-wizard-step complete">
+        <div class="text-center bs-wizard-stepnum"><%= step.title %></div>
+        <div class="progress"><div class="progress-bar"></div></div>
+        <a href="#" class="bs-wizard-dot" step="<%= index %>"></a>
+      </div>
+    <% end  %>
   </div>
 </div>
 
 <hr />
 
-<div class="step-01">
-  <%= render partial: "cards", locals: { some_var: {} }  %>
-</div>
-
-<div class="step-02">
-  <%= render partial: "cards", locals: { some_var: {} }  %>
-</div>
+<% @steps.each_with_index do |step, index| %>
+  <div class="step-0<%= index %>" style="display:<%= index > 0 ? 'none': 'block'%>">
+    <%= render partial: "cards", locals: { cards: step.cards }  %>
+  </div>
+<% end %>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe RoomsController, '#index', type: [:controller, :session_vote] do
+describe RoomsController, '#index', type: [:controller, :room] do
   let(:user) { create(:user) }
   before do
     sign_in user

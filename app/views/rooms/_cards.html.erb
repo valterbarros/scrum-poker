@@ -4,7 +4,11 @@
       <div class="card-container">
         <div class="card selectable">
           <div class="inner">
-            <span class="card-label"><%= card.title  %></span>
+            <%= link_to card.title, 
+                        vote_room_path(
+                          card_id: card.id, 
+                          id: session_vote.id, 
+                          task_id: session_vote.tasks.first), class: "card-label", method: 'post' %>
           </div>
         </div>
       </div>

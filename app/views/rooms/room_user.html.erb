@@ -1,4 +1,4 @@
-<div class="page-header">
+<div class="page-header" data-channel="rooms" data-room-id="<%= @session_vote.id %>" data-owner-room-id="<%= @session_vote.owner_id %>">
   <h1><%= @session_vote.title %> <small>You need click on card to vote!</small> </h1>
 </div>
 
@@ -18,6 +18,6 @@
 
 <% @steps.each_with_index do |step, index| %>
   <div class="step-0<%= index %>" style="display:<%= index > 0 ? 'none': 'block'%>">
-    <%= render partial: "cards", locals: { cards: step.cards }  %>
+    <%= render partial: "cards", locals: { cards: step.cards, session_vote: @session_vote }  %>
   </div>
 <% end %>

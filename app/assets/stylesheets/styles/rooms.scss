@@ -31,7 +31,7 @@ div.card .inner {
   text-align: center;
 }
 
-span.card-label {
+a.card-label {
   display: block;
   font-size: 2em;
   font-weight: bold;
@@ -39,7 +39,7 @@ span.card-label {
   color: #FFFFFF;
 }
 @media (min-width: 992px) {
-  span.card-label {
+  a.card-label {
     padding: 75px 0 75px;
   }
 }
@@ -123,7 +123,7 @@ div.remove {
   background-image: -webkit-linear-gradient(top, #fc9f8a, #fa623f);
 }
 
-div.remove span {
+div.remove a {
   position: absolute;
   top: 50%;
   left: 50%;

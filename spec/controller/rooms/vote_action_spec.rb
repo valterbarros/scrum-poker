@@ -8,17 +8,21 @@ describe RoomsController, '#vote', type:[:controller, :rooms] do
 
   before do
     sign_in user
-    get :vote, params:{ id: session_vote.id, card_id: card.id, task_id: task.id }
+    get :vote, params:{ id: session_vote.id, card_id: card.id, task_id: task.id }, xhr: true
   end
 
   context 'When user access #vote with valid params' do
     it 'should return status 200' do
-      expect(response.status).to be == 204
+      expect(response.status).to be == 200
+    end
+
+    it 'should render :save_success' do
+      expect(subject).to render_template :save_success
     end
 
     it "creates a new vote" do
       expect{
-        get :vote, params:{ id: session_vote.id, card_id: card.id, task_id: task.id }
+        get :vote, params:{ id: session_vote.id, card_id: card.id, task_id: task.id }, xhr:true
       }.to change(Vote, :count).by(1)
     end
   end

@@ -22,8 +22,11 @@ class RoomsController < ApplicationController
     @session_vote = SessionVote.find(params[:id])
     @task = Task.find(params[:task_id])
     @vote = Vote.new(score: @card.title, session_vote: @session_vote, user: current_user, task: @task)
-    @vote.save
-    head :no_content
+    if @vote.save
+      render :save_success
+    else
+      render :save_fail
+    end
   end
 
   private

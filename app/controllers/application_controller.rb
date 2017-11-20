@@ -11,12 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation])
   end
 
-  def current_session_vote_id
-    session[:session_vote]
+  def current_session_vote
+    @session_vote ||= SessionVote.find(session[:session_vote_id])
   end
 
   def set_current_session_vote_id(id)
-    session[:session_vote]
+    session[:session_vote_id]
   end
 
 end

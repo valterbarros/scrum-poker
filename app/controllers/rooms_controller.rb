@@ -17,6 +17,15 @@ class RoomsController < ApplicationController
     redirect_to rooms_path, notice: 'as_user key is missing'
   end
 
+  def vote
+    @card = Card.find(params[:card_id])
+    @session_vote = SessionVote.find(params[:id])
+    @task = Task.find(params[:task_id])
+    @vote = Vote.new(score: @card.title, session_vote: @session_vote, user: current_user, task: @task)
+    @vote.save
+    head :no_content
+  end
+
   private
   def user_is_owner_from_session_vote?
     SessionVote.find(params[:id]).owner_id == current_user.id

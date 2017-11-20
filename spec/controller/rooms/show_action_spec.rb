@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe RoomsController, '#show', type: [:controller, :session_vote] do
+describe RoomsController, '#show', type: [:controller, :room] do
   before do
     sign_in user
     action

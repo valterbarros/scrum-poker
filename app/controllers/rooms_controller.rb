@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
     @invite = Invite.new
     @users = User.all
     @steps = @session_vote.steps
+    current_session_vote_id = @session_vote.id
     if params[:as_user]
       render action: :room_user; return
     elsif user_is_owner_from_session_vote?
@@ -23,6 +24,7 @@ class RoomsController < ApplicationController
     @task = Task.find(params[:task_id])
     @vote = Vote.new(score: @card.title, session_vote: @session_vote, user: current_user, task: @task)
     if @vote.save
+      process_queue_service << VoteJob.new(@vote)
       render :save_success
     else
       render :save_fail

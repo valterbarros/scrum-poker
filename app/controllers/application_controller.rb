@@ -15,8 +15,15 @@ class ApplicationController < ActionController::Base
     @session_vote ||= SessionVote.find(session[:session_vote_id])
   end
 
-  def set_current_session_vote_id(id)
+  def current_session_vote_id=(id)
+    session[:session_vote_id] = id
+  end
+
+  def current_session_vote_id
     session[:session_vote_id]
   end
 
+  def process_queue_service
+    @process_queue_service ||= Services::Votes::ProcessVoteQueue.new
+  end
 end

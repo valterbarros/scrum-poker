@@ -1,7 +1,14 @@
 class VoteJob < ApplicationJob
-  def perform(vote)
+  attr_reader :vote, :session_vote_id
+
+  def initialize vote 
+    @vote = vote
+    @session_vote_id = vote.session_vote.id 
+  end
+
+  def perform
     ActionCable.server.broadcast(
-      "rooms:#{vote.session_vote.id}", 
+      "rooms:#{session_vote_id}", 
       user: vote.user.name, score: vote.score
     )
   end

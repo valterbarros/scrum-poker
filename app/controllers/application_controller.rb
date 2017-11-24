@@ -24,6 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def process_queue_service
-    @process_queue_service ||= Services::Votes::ProcessVoteQueue.new
+    @process_queue_service ||= Services::Votes::ProcessVoteQueue.instance
   end
 end

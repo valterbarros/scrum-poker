@@ -25,10 +25,11 @@ class RoomsController < ApplicationController
     @vote = Vote.new(score: @card.title, session_vote: @session_vote, user: current_user, task: @task)
     if @vote.save
       process_queue_service << VoteJob.new(@vote)
-      render :save_success
+      #render :save_success
     else
-      render :save_fail
+      #render :save_fail
     end
+    require 'pry'; binding.pry
   end
 
   private

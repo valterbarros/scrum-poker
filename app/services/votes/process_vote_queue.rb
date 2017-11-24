@@ -1,6 +1,8 @@
 module Services
   module Votes
     class ProcessVoteQueue
+      include Singleton
+
       attr_reader :queue
 
       def initialize 

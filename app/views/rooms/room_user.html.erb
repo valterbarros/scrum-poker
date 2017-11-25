@@ -21,6 +21,7 @@
 
 <% @steps.each_with_index do |step, index| %>
   <div class="step-0<%= index %>" style="display:<%= index > 0 ? 'none': 'block'%>">
-    <%= render partial: "cards", locals: { cards: step.cards, session_vote: @session_vote, step: step }  %>
+    <%= render partial: "cards", 
+               locals: { step_position: index, cards: step.cards, session_vote: @session_vote, step: step }  %>
   </div>
 <% end %>

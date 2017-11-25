@@ -1,6 +1,7 @@
 <%- count_steps = @steps.count %>
 <div class="page-header" data-channel="rooms" data-room-id="<%= @session_vote.id %>" data-owner-room-id="<%= @session_vote.owner_id %>">
-  <h1><%= @session_vote.title %> <small>Session Vote</small> </h1>
+  <h1 class="title"><%= @session_vote.title %> <small>Session Vote</small> </h1>
+  <a class="button pull-right btn btn-default" href="<%= room_path(@session_vote.id, as_user: 1)%>">See as User</a>
 </div>
 
 <ul class="nav nav-tabs">

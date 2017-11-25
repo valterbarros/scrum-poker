@@ -11,6 +11,7 @@ class RoomsController < ApplicationController
     @steps = @session_vote.steps.to_a
     current_session_vote_id = @session_vote.id
     if params[:as_user]
+      @owner_session = user_is_owner_from_session_vote?
       render action: :room_user; return
     elsif user_is_owner_from_session_vote?
       render action: :room_owner_session; return

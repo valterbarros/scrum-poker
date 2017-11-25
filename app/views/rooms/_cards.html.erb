@@ -8,6 +8,7 @@
                         vote_room_path(
                           card_id: card.id, 
                           id: session_vote.id, 
+                          step_id: step.id, 
                           remote: true,
                           task_id: session_vote.tasks.first), class: "card-label", method: 'post' %>
           </div>

@@ -2,163 +2,19 @@
   <h1><%= @session_vote.title %> <small>Session Vote</small> </h1>
 </div>
 
-<div class="row ng-scope" ng-if="master.teamComplete">
-  <div class="card-overview">
-    <!-- ngRepeat: vote in master.votes track by vote.id --><div ng-repeat="vote in master.votes track by vote.id" class="col-lg-2 col-sm-3 col-xs-4 ng-scope">        
+<div class="row">
+  <% @users.each do |user|  %>
+    <div class="col-lg-2 col-md-3 col-xs-4">
       <div class="card-container">
-        <div class="deletable-card">
-          <div class="card-flip flipped" ng-class="{flipped: master.flipped}">
-            <div class="card front active" ng-class="{active: vote.active}">
-              <!-- ngIf: vote.placed --><div ng-if="vote.placed" class="inner ng-scope"><span class="card-label">?</span></div><!-- end ngIf: vote.placed -->
-            </div>
-            <div class="card back active" ng-class="{active: vote.active, confirmed: master.consensus}">
-              <div class="inner"><span class="card-label ng-binding" ng-bind-html="vote.value">3</span></div>
-            </div>
-          </div>
-          <div class="delete-member remove selectable" ng-click="master.remove(vote.id)">
-            <span class="glyphicon glyphicon-remove"></span>
+        <h4><%= user.name.capitalize  %></h4>
+        <div class="card selectable">
+          <div class="inner">
+            <a class="card-label">?</a>
           </div>
         </div>
-        <h2 ng-bind="vote.name" class="ng-binding">📱David</h2>
-      </div>            
-    </div><!-- end ngRepeat: vote in master.votes track by vote.id --><div ng-repeat="vote in master.votes track by vote.id" class="col-lg-2 col-sm-3 col-xs-4 ng-scope">        
-      <div class="card-container">
-        <div class="deletable-card">
-          <div class="card-flip flipped" ng-class="{flipped: master.flipped}">
-            <div class="card front" ng-class="{active: vote.active}">
-              <!-- ngIf: vote.placed --><div ng-if="vote.placed" class="inner ng-scope"><span class="card-label">?</span></div><!-- end ngIf: vote.placed -->
-            </div>
-            <div class="card back" ng-class="{active: vote.active, confirmed: master.consensus}">
-              <div class="inner"><span class="card-label ng-binding" ng-bind-html="vote.value">5</span></div>
-            </div>
-          </div>
-          <div class="delete-member remove selectable" ng-click="master.remove(vote.id)">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </div>
-        <h2 ng-bind="vote.name" class="ng-binding">🚂🔥 Matt</h2>
-      </div>            
-    </div><!-- end ngRepeat: vote in master.votes track by vote.id --><div ng-repeat="vote in master.votes track by vote.id" class="col-lg-2 col-sm-3 col-xs-4 ng-scope">        
-      <div class="card-container">
-        <div class="deletable-card">
-          <div class="card-flip flipped" ng-class="{flipped: master.flipped}">
-            <div class="card front" ng-class="{active: vote.active}">
-              <!-- ngIf: vote.placed --><div ng-if="vote.placed" class="inner ng-scope"><span class="card-label">?</span></div><!-- end ngIf: vote.placed -->
-            </div>
-            <div class="card back" ng-class="{active: vote.active, confirmed: master.consensus}">
-              <div class="inner"><span class="card-label ng-binding" ng-bind-html="vote.value">5</span></div>
-            </div>
-          </div>
-          <div class="delete-member remove selectable" ng-click="master.remove(vote.id)">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </div>
-        <h2 ng-bind="vote.name" class="ng-binding">Javi G.</h2>
-      </div>            
-    </div><!-- end ngRepeat: vote in master.votes track by vote.id --><div ng-repeat="vote in master.votes track by vote.id" class="col-lg-2 col-sm-3 col-xs-4 ng-scope">        
-      <div class="card-container">
-        <div class="deletable-card">
-          <div class="card-flip flipped" ng-class="{flipped: master.flipped}">
-            <div class="card front" ng-class="{active: vote.active}">
-              <!-- ngIf: vote.placed --><div ng-if="vote.placed" class="inner ng-scope"><span class="card-label">?</span></div><!-- end ngIf: vote.placed -->
-            </div>
-            <div class="card back" ng-class="{active: vote.active, confirmed: master.consensus}">
-              <div class="inner"><span class="card-label ng-binding" ng-bind-html="vote.value">5</span></div>
-            </div>
-          </div>
-          <div class="delete-member remove selectable" ng-click="master.remove(vote.id)">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </div>
-        <h2 ng-bind="vote.name" class="ng-binding">Javi 🎮</h2>
-      </div>            
-    </div><!-- end ngRepeat: vote in master.votes track by vote.id --><div ng-repeat="vote in master.votes track by vote.id" class="col-lg-2 col-sm-3 col-xs-4 ng-scope">        
-      <div class="card-container">
-        <div class="deletable-card">
-          <div class="card-flip flipped" ng-class="{flipped: master.flipped}">
-            <div class="card front active" ng-class="{active: vote.active}">
-              <!-- ngIf: vote.placed --><div ng-if="vote.placed" class="inner ng-scope"><span class="card-label">?</span></div><!-- end ngIf: vote.placed -->
-            </div>
-            <div class="card back active" ng-class="{active: vote.active, confirmed: master.consensus}">
-              <div class="inner"><span class="card-label ng-binding" ng-bind-html="vote.value">8</span></div>
-            </div>
-          </div>
-          <div class="delete-member remove selectable" ng-click="master.remove(vote.id)">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </div>
-        <h2 ng-bind="vote.name" class="ng-binding">pere</h2>
-      </div>            
-    </div><!-- end ngRepeat: vote in master.votes track by vote.id --><div ng-repeat="vote in master.votes track by vote.id" class="col-lg-2 col-sm-3 col-xs-4 ng-scope">        
-      <div class="card-container">
-        <div class="deletable-card">
-          <div class="card-flip flipped" ng-class="{flipped: master.flipped}">
-            <div class="card front active" ng-class="{active: vote.active}">
-              <!-- ngIf: vote.placed --><div ng-if="vote.placed" class="inner ng-scope"><span class="card-label">?</span></div><!-- end ngIf: vote.placed -->
-            </div>
-            <div class="card back active" ng-class="{active: vote.active, confirmed: master.consensus}">
-              <div class="inner"><span class="card-label ng-binding" ng-bind-html="vote.value">8</span></div>
-            </div>
-          </div>
-          <div class="delete-member remove selectable" ng-click="master.remove(vote.id)">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </div>
-        <h2 ng-bind="vote.name" class="ng-binding">Sarychev</h2>
-      </div>            
-    </div><!-- end ngRepeat: vote in master.votes track by vote.id --><div ng-repeat="vote in master.votes track by vote.id" class="col-lg-2 col-sm-3 col-xs-4 ng-scope">        
-      <div class="card-container">
-        <div class="deletable-card">
-          <div class="card-flip flipped" ng-class="{flipped: master.flipped}">
-            <div class="card front" ng-class="{active: vote.active}">
-              <!-- ngIf: vote.placed --><div ng-if="vote.placed" class="inner ng-scope"><span class="card-label">?</span></div><!-- end ngIf: vote.placed -->
-            </div>
-            <div class="card back" ng-class="{active: vote.active, confirmed: master.consensus}">
-              <div class="inner"><span class="card-label ng-binding" ng-bind-html="vote.value">5</span></div>
-            </div>
-          </div>
-          <div class="delete-member remove selectable" ng-click="master.remove(vote.id)">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </div>
-        <h2 ng-bind="vote.name" class="ng-binding">Santi</h2>
-      </div>            
-    </div><!-- end ngRepeat: vote in master.votes track by vote.id --><div ng-repeat="vote in master.votes track by vote.id" class="col-lg-2 col-sm-3 col-xs-4 ng-scope">        
-      <div class="card-container">
-        <div class="deletable-card">
-          <div class="card-flip flipped" ng-class="{flipped: master.flipped}">
-            <div class="card front" ng-class="{active: vote.active}">
-              <!-- ngIf: vote.placed --><div ng-if="vote.placed" class="inner ng-scope"><span class="card-label">?</span></div><!-- end ngIf: vote.placed -->
-            </div>
-            <div class="card back" ng-class="{active: vote.active, confirmed: master.consensus}">
-              <div class="inner"><span class="card-label ng-binding" ng-bind-html="vote.value">5</span></div>
-            </div>
-          </div>
-          <div class="delete-member remove selectable" ng-click="master.remove(vote.id)">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </div>
-        <h2 ng-bind="vote.name" class="ng-binding">Jordi</h2>
-      </div>            
-    </div><!-- end ngRepeat: vote in master.votes track by vote.id --><div ng-repeat="vote in master.votes track by vote.id" class="col-lg-2 col-sm-3 col-xs-4 ng-scope">        
-      <div class="card-container">
-        <div class="deletable-card">
-          <div class="card-flip flipped" ng-class="{flipped: master.flipped}">
-            <div class="card front" ng-class="{active: vote.active}">
-              <!-- ngIf: vote.placed -->
-            </div>
-            <div class="card back" ng-class="{active: vote.active, confirmed: master.consensus}">
-              <div class="inner"><span class="card-label ng-binding" ng-bind-html="vote.value">0</span></div>
-            </div>
-          </div>
-          <div class="delete-member remove selectable" ng-click="master.remove(vote.id)">
-            <span class="glyphicon glyphicon-remove"></span>
-          </div>
-        </div>
-        <h2 ng-bind="vote.name" class="ng-binding">valter</h2>
-      </div>            
-    </div><!-- end ngRepeat: vote in master.votes track by vote.id -->
-  </div> 
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <div class="row">

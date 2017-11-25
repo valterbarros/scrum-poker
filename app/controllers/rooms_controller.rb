@@ -24,11 +24,11 @@ class RoomsController < ApplicationController
     @session_vote = SessionVote.find(params[:id])
     @task = Task.find(params[:task_id])
     @vote = Vote.new(score: @card.title, session_vote: @session_vote, user: current_user, task: @task)
+    @step_position = params[:step_position]
     if @vote.save
-      process_queue_service << VoteJob.new(@vote)
-      #render :save_success
+      render :vote_success; return
     else
-      #render :save_fail
+      render :vote_fail; return
     end
   end
 

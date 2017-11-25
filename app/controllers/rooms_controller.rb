@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
   def show
     @invite = Invite.new
     @users = User.all
-    @steps = @session_vote.steps
+    @steps = @session_vote.steps.to_a
     current_session_vote_id = @session_vote.id
     if params[:as_user]
       render action: :room_user; return
@@ -29,7 +29,6 @@ class RoomsController < ApplicationController
     else
       #render :save_fail
     end
-    require 'pry'; binding.pry
   end
 
   private

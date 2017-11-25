@@ -1,18 +1,40 @@
+<%- count_steps = @steps.count %>
 <div class="page-header" data-channel="rooms" data-room-id="<%= @session_vote.id %>" data-owner-room-id="<%= @session_vote.owner_id %>">
   <h1><%= @session_vote.title %> <small>Session Vote</small> </h1>
 </div>
 
+<ul class="nav nav-tabs">
+  <li class="active step-session">
+    <a href="#" step="0" active="active" class="next-step">
+      <%= @steps.shift.title  %>
+    </a>
+  </li>
+  <% @steps.each_with_index do |step, index|  %>
+    <li class="step-session">
+      <a href="#" active="active" step="<%= index + 1 %>" class="next-step">
+        <%= step.title  %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<br />
+
 <div class="row">
-  <% @users.each do |user|  %>
-    <div class="col-lg-2 col-md-3 col-xs-4">
-      <div class="card-container">
-        <h4><%= user.name.capitalize  %></h4>
-        <div class="card selectable">
-          <div class="inner">
-            <a class="card-label">?</a>
+  <% count_steps.times do |index| %>
+    <div class="step-0<%= index %>" style="display:<%= index > 0 ? 'none': 'block'%>">
+      <% @users.each do |user|  %>
+        <div class="col-lg-2 col-md-3 col-xs-4">
+          <div class="card-container">
+            <h4><%= user.name.capitalize  %></h4>
+            <div class="card selectable">
+              <div class="inner">
+                <a class="card-label">? <%= 1 * index  %></a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   <% end %>
 </div>

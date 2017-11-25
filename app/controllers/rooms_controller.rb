@@ -23,8 +23,8 @@ class RoomsController < ApplicationController
     @card = Card.find(params[:card_id])
     @session_vote = SessionVote.find(params[:id])
     @task = Task.find(params[:task_id])
-    @vote = Vote.new(score: @card.title, session_vote: @session_vote, user: current_user, task: @task)
     @step_position = params[:step_position]
+    @vote = Vote.new(score: @card.title, session_vote: @session_vote, user: current_user, task: @task, step_position: @step_position)
     if @vote.save
       render :vote_success; return
     else

@@ -6,7 +6,10 @@ App.room = App.cable.subscriptions.create "RoomsChannel",
     @installPageChangeCallback()
 
   received: (data) ->
-    console.log("The #{data['user_id']} user votes #{data['score']}") if @currentUserIsOwnerFromRoom()
+    console.log data
+    $(".step-0#{data['step_position']}")
+      .find("#user-card-id-#{data['user_id']}")
+      .html(data['score']) if @currentUserIsOwnerFromRoom
 
   followCurrentRoom: ->
     console.log @collection().data('roomId')

@@ -1,5 +1,5 @@
 <div class="row">
-  <% cards.each do |card|  %>
+  <% cards.each_with_index do |card, index|  %>
     <div class="col-lg-2 col-md-3 col-xs-4">
       <div class="card-container">
         <div class="card selectable" id="card-<%= card.id %>">

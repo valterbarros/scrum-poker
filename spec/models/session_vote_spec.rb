@@ -9,7 +9,7 @@ describe SessionVote, type:[:models,:session_vote] do
     it 'create a new object session_vote' do
     expect {
       session_vote
-    }.to change(SessionVote, :count).by(1)
+    }.to change(SessionVote, :count).by(2)
     end
   end
 
@@ -70,7 +70,7 @@ describe SessionVote, type:[:models,:session_vote] do
       }.to raise_error ActiveRecord::RecordInvalid
     end
 
-    let(:session_vote) { create :session_vote, tasks: [task], users: [user], votes: [Vote.create(score:5)] }
+    let(:session_vote) { create :session_vote, tasks: [task], users: [user], votes: [Vote.create(score:5,task: task, user: user, session_vote: session_vote)] }
     it 'When try close a session with user and tasks and votes' do
       cs = Validators::CloseSessionVote.new(users:session_vote.users, tasks:session_vote.tasks, votes:session_vote.votes)
       expect{

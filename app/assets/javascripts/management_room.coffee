@@ -13,7 +13,7 @@ App.management_room =
   mark_card_as_voted: (data) ->
     card = $(@build_card_selector(data))
     card.get(0).voted = data['score']
-    card.get(0).addClass('confirmed')
+    card.parents('.selectable').addClass('confirmed')
     @flip_cards(data) if @all_users_voted()
 
   render_participant_users: (user) ->

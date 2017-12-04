@@ -12,9 +12,9 @@ App.management_room =
 
   mark_card_as_voted: (data) ->
     card = $(@build_card_selector(data))
-    card.html(data['score']) 
-    card.get(0).voted = 1
-    console.log "all voted" if @all_users_voted()
+    card.get(0).voted = data['score']
+    card.get(0).addClass('confirmed')
+    @flip_cards(data) if @all_users_voted()
 
   render_participant_users: (user) ->
     for num in [0..1]
@@ -33,12 +33,16 @@ App.management_room =
         """
       )
 
-  flip_cards: ->
+  flip_cards: (data) ->
+    card = $('.card-label')
+    card.each ->
+      vote_value = @.voted
+      $(@).html(vote_value)
 
   all_users_voted: ->
     all_voted = []
     $('.card-label').each (el) ->
-      all_voted.push(@.voted is 1)
+      all_voted.push(@.voted > 0)
     all_voted.every (currentValue) ->
       currentValue == true
 

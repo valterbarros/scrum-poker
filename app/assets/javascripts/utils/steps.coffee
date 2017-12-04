@@ -2,7 +2,6 @@
 
   @init = ->
     $('.next-step').on 'click', (e)->
-      e.preventDefault()
       step = $(this).attr('step')
       toggleActiveClass($(this))
       changeStepTo(parseInt(step))

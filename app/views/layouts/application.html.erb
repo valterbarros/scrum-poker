@@ -64,6 +64,10 @@
         </nav>
       </div>
     </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+
     <script>
       $(function () {
         $('[data-tooltip="tooltip"]').tooltip()
@@ -71,8 +75,5 @@
         
       App.init();
     </script>
-    <div class="container">
-      <%= yield %>
-    </div>
   </body>
 </html>

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     member do
       post 'vote/:card_id/task/:task_id/step/:step_id', to: 'rooms#vote', as: 'vote'
     end
+    collection do
+      post 'join/:token', to: 'rooms#join', as: :join
+    end
   end
   resources :invites, only: [:create]
 end

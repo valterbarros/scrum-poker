@@ -32,6 +32,13 @@ class RoomsController < ApplicationController
     end
   end
 
+  def join
+    @invite = Invite.find_by_token(params[:token])
+    if @invite
+      current_user.session_vote = @invite.session_vote
+    end
+  end
+
   private
   def user_is_owner_from_session_vote?
     SessionVote.find(params[:id]).owner_id == current_user.id

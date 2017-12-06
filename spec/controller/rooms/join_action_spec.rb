@@ -3,7 +3,7 @@ require 'rails_helper'
 describe RoomsController, '#join', type: [:controller, :room] do
   let(:user) { create(:user) }
   let(:session_vote) { create(:session_vote) }
-  let(:invite) { create(:invite) }
+  let(:invite) { create(:invite, recipient: user) }
 
   before do
     sign_in user

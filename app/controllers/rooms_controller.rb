@@ -34,6 +34,7 @@ class RoomsController < ApplicationController
 
   def join
     @invite = Invite.find_by_token(params[:token])
+    authorize @invite
     if @invite
       current_user.session_vote = @invite.session_vote
     end

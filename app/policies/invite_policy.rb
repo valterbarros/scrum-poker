@@ -1,4 +1,4 @@
-class InvitePolicy
+class InvitePolicy < ApplicationPolicy
   def initialize(user, invite)
     @user = user
     @invite = invite

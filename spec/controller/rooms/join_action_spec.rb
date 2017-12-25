@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe RoomsController, '#join', type: [:controller, :room] do
   let(:user) { create(:user) }
-  let(:session_vote) { create(:session_vote) }
   let(:invite) { create(:invite, recipient: user) }
 
   before do
@@ -12,8 +11,8 @@ describe RoomsController, '#join', type: [:controller, :room] do
 
   context 'When access join path' do
     context 'When current user is the same recipient from invite' do
-      it 'should return status 200' do
-        expect(response.status).to be == 204
+      it 'should redirect to room path' do
+        expect(subject).to redirect_to room_path(invite.session_vote_id)
       end
     end
 

@@ -37,6 +37,7 @@ class RoomsController < ApplicationController
     authorize @invite
     if @invite
       current_user.session_vote = @invite.session_vote
+      redirect_to(room_path(@invite.session_vote))
     end
   end
 

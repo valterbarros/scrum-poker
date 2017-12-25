@@ -7,8 +7,7 @@ class InvitesController < ApplicationController
         title: "You are invited for a new session by #{current_user.name}",
         body: "Do you want accept the invite?",
         user_id: invite_params[:recipient_id]
-      )
-      @notification.save
+      ).save
     end
   end
   

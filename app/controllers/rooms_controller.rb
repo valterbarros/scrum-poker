@@ -6,7 +6,9 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @invite = Invite.new
     @users = User.where(session_vote_id: params[:id])
+    @all_users = User.where.not(session_vote_id: params[:id])
     @steps = @session_vote.steps.to_a
     current_session_vote_id = @session_vote.id
     if user_is_owner_from_session_vote?
@@ -40,12 +42,14 @@ class RoomsController < ApplicationController
     authorize @invite
     if @invite
       current_user.session_vote = @invite.session_vote
+      current_user.save
       redirect_to(room_path(@invite.session_vote))
     end
   end
 
   private
   def user_is_owner_from_session_vote?
+    return false unless params[:id]
     SessionVote.find(params[:id]).owner_id == current_user.id
   end
 

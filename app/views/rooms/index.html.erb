@@ -2,6 +2,6 @@
   <hr />
   <p>Created_at: <%= session_vote.created_at  %></p>
   <p>Title: <%= session_vote.title  %></p>
-  <%= link_to "Enter", mount_show_path(session_vote)  %>
+  <%= link_to "Enter", room_path(session_vote.id) %>
   <hr />
 <% end %>

@@ -6,15 +6,13 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @invite = Invite.new
-    @users = User.all
+    @users = User.where(session_vote_id: params[:id])
     @steps = @session_vote.steps.to_a
     current_session_vote_id = @session_vote.id
-    if params[:as_user]
-      @owner_session = user_is_owner_from_session_vote?
-      render action: :room_user; return
-    elsif user_is_owner_from_session_vote?
-      render action: :room_owner_session; return
+    if user_is_owner_from_session_vote?
+      return render action: :room_owner_session
+    elsif user_is_included_on_current_session_vote?
+      return render action: :room_user
     end
     redirect_to rooms_path, notice: 'as_user key is missing'
   end
@@ -24,15 +22,20 @@ class RoomsController < ApplicationController
     @session_vote = SessionVote.find(params[:id])
     @task = Task.find(params[:task_id])
     @step_position = params[:step_position]
-    @vote = Vote.new(score: @card.title, session_vote: @session_vote, user: current_user, task: @task, step_position: @step_position)
+    @vote = Vote.new(score: @card.title, 
+                     session_vote: @session_vote, 
+                     user: current_user, 
+                     task: @task, 
+                     step_position: @step_position)
     if @vote.save
-      render :vote_success; return
+      return render :vote_success
     else
-      render :vote_fail; return
+      return render :vote_fail
     end
   end
 
   def join
+    redirect_to(room_path(@invite.session_vote)) if user_is_owner_from_session_vote?
     @invite = Invite.find_by_token(params[:token])
     authorize @invite
     if @invite
@@ -44,6 +47,10 @@ class RoomsController < ApplicationController
   private
   def user_is_owner_from_session_vote?
     SessionVote.find(params[:id]).owner_id == current_user.id
+  end
+
+  def user_is_included_on_current_session_vote?
+    current_user.session_vote_id == @session_vote.id
   end
 
   def set_session_vote

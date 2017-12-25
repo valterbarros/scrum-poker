@@ -6,7 +6,7 @@ describe RoomsController, '#join', type: [:controller, :room] do
 
   before do
     sign_in user
-    post :join, params: { token: invite.token } 
+    get :join, params: { token: invite.token } 
   end
 
   context 'When access join path' do

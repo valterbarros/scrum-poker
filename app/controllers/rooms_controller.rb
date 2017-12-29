@@ -43,6 +43,7 @@ class RoomsController < ApplicationController
     if @invite
       current_user.session_vote = @invite.session_vote
       current_user.save
+      ParticipantJob.perform_later(current_user, @invite.session_vote.id)
       redirect_to(room_path(@invite.session_vote))
     end
   end

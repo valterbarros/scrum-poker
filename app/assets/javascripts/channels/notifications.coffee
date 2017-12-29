@@ -1,4 +1,5 @@
 App.cable.subscriptions.create "NotificationsChannel",
   received: (data) ->
-    console.log(data)
-    new Notification data['title'], body: data['content']
+    $('.notification-items').append(data['partial'])
+    count = $('.notification-count').html()
+    $('.notification-count').html(parseInt(count) + 1)

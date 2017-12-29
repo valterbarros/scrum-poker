@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
   def show
     @invite = Invite.new
     @users = User.where(session_vote_id: params[:id])
-    @all_users = User.where.not(session_vote_id: params[:id])
+    @all_users = User.where('session_vote_id !=? OR session_vote_id IS NULL', params[:id])
     @steps = @session_vote.steps.to_a
     current_session_vote_id = @session_vote.id
     if user_is_owner_from_session_vote?

@@ -1,4 +1,4 @@
-App.room = App.cable.subscriptions.create "RoomsChannel",
+App.vote = App.cable.subscriptions.create "VotesChannel",
   collection: -> $("[data-channel='rooms']")
 
   connected: ->

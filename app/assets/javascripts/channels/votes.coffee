@@ -17,4 +17,4 @@ App.vote = App.cable.subscriptions.create "VotesChannel",
   installPageChangeCallback: ->
     unless @installedPageChangeCallback
       @installedPageChangeCallback = true
-      $(document).on 'turbolinks:load', -> App.room.followCurrentRoom()
+      $(document).on 'turbolinks:load', -> App.vote.followCurrentRoom()

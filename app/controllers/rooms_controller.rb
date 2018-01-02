@@ -6,19 +6,18 @@ class RoomsController < ApplicationController
   end
 
   def show
+    set_current_session_vote_id(@session_vote.id)
+
     @invite = Invite.new
     @users = User.where(session_vote_id: params[:id])
     @all_users = User.where('session_vote_id !=? OR session_vote_id IS NULL', params[:id])
     @steps = @session_vote.steps.to_a
-    current_session_vote_id = @session_vote.id
-    if user_is_owner_from_session_vote? && params[:as_user]
-      return render action: :room_user
-    elsif user_is_owner_from_session_vote?
-      return render action: :room_owner_session
-    elsif user_is_included_on_current_session_vote?
-      return render action: :room_user
-    end
-    redirect_to rooms_path, notice: 'as_user key is missing'
+    @owner_session = user_is_owner_from_session_vote?
+
+    Services::Rooms::ShowManager.new(current_user, @session_vote, params, {
+      user_action: -> () { return render(action: :room_user) },
+      owner_action: -> () { return render(action: :room_owner_session) }
+    }).perform
   end
 
   def vote
@@ -51,6 +50,7 @@ class RoomsController < ApplicationController
   end
 
   private
+
   def user_is_owner_from_session_vote?
     return false unless params[:id]
     SessionVote.find(params[:id]).owner_id == current_user.id

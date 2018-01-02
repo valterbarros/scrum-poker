@@ -7,7 +7,7 @@ describe RoomsController, '#show', type: [:controller, :room] do
   end
 
   context 'When access index path' do
-    context 'When user is owner from session' do
+    context 'When user is owner from room' do
       let!(:user) { create(:user) }
       let!(:session_vote) { create(:session_vote, owner: user) }
 
@@ -27,23 +27,15 @@ describe RoomsController, '#show', type: [:controller, :room] do
       end
     end
 
-    context 'When user is not owner from session' do
+    context 'When user is not owner from room' do
       let(:user_001) { create(:user) }
       let!(:session_vote) { create(:session_vote, owner: user_001) }
-      let!(:user) { create(:user) }
+      let(:action) { get :show, params: { id: session_vote.id } }
 
-      context 'Not pass as_user key' do
-        let(:action) { get :show, params: { id: session_vote.id } }
+      context 'When user is participant from room' do
+        let!(:user) { create(:user, session_vote: session_vote) }
 
-        it 'should render :index template' do
-          expect(subject).to redirect_to rooms_path
-        end
-      end
-
-      context 'Pass as_user key' do
-        let(:action) { get :show, params: { id: session_vote.id, as_user: 1 } }
-
-        it 'should render :index template' do
+        it 'should render :room_user template' do
           expect(subject).to render_template :room_user
         end
       end

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  alias_attribute :room_id, :session_vote_id
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   extend Devise::Models

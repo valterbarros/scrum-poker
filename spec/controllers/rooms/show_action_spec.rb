@@ -33,7 +33,7 @@ describe RoomsController, '#show', type: [:controller, :room] do
       let(:action) { get :show, params: { id: session_vote.id } }
 
       context 'When user is participant from room' do
-        let!(:user) { create(:user, session_vote: session_vote) }
+        let!(:user) { create(:user, room: session_vote) }
 
         it 'should render :room_user template' do
           expect(subject).to render_template :room_user

@@ -1,3 +1,15 @@
+# Before you start read this code you need a disclaime I know this code increase the complexity from app
+# But for this have a good motive I extract this from rails source to learn and implement new things from rails
+# And is that
+
+#This is a usage example on controller
+
+# choise_response(response_params_show) do |format|
+#   format.user_action { return render(action: :room_user) }
+#   format.owner_action { return render(action: :room_owner_session) }
+# end
+#
+
 module ActionController #:nodoc:
   module TypeResponse
 

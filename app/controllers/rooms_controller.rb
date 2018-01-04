@@ -12,7 +12,7 @@ class RoomsController < ApplicationController
 
     @invite = Invite.new
     @users = User.where(session_vote_id: params[:id])
-    @all_users = User.where('session_vote_id !=? OR session_vote_id IS NULL', params[:id])
+    @users_for_invite = Queries::QueryUserForInvite.new(params).fetch_result  
     @steps = @session_vote.steps.to_a
     @owner_session = user_is_owner_from_session_vote?
 

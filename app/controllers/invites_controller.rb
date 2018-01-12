@@ -9,7 +9,12 @@ class InvitesController < ApplicationController
         user_id: invite_params[:recipient_id],
         url: join_rooms_path(@invite.token)
       ).save
+
+      params[:id] = @invite.session_vote_id
+      @invite = Invite.new
+      @users_for_invite = Queries::QueryUserForInvite.new({id:params[:id]}).fetch_result  
     end
+
   end
   
   private

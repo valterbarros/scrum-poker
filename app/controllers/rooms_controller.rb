@@ -1,6 +1,4 @@
 class RoomsController < ApplicationController
-  include ActionController::TypeResponse 
-
   before_action :set_session_vote, only: [:show]
 
   def index
@@ -16,7 +14,7 @@ class RoomsController < ApplicationController
     @steps = @session_vote.steps.to_a
     @owner_session = user_is_owner_from_session_vote?
 
-    choise_response(response_params_show) do |format|
+    show_manager_action.choise_response(response_params_show) do |format|
       format.user_action { return render(action: :room_user) }
       format.owner_action { return render(action: :room_owner_session) }
     end
@@ -54,6 +52,9 @@ class RoomsController < ApplicationController
   end
 
   private
+  def show_manager_action
+    Services::Rooms::Show::ManagerShowAction.new
+  end
 
   def response_params_show
     {

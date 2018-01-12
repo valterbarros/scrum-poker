@@ -1,65 +1,41 @@
+
 # Before you start read this code you need a disclaime I know this code increase the complexity from app
 # But for this have a good motive I extract this from rails source to learn and implement new things from rails
 # And is that
 
 #This is a usage example on controller
 
-# choise_response(response_params_show) do |format|
+# service.choise_response(response_params_show) do |format|
 #   format.user_action { return render(action: :room_user) }
 #   format.owner_action { return render(action: :room_owner_session) }
 # end
-#
 
-module ActionController #:nodoc:
-  module TypeResponse
+module Services
+  module ResponseBase
+    def choise_response(params, response_type, &block)
+      collector = Collector.new(response_type)
 
-    module ResponseTypes
-      def user_action(&block)
-        condition = { 
-          user_action: -> (params) { 
-            params[:user].room_id == params[:room].id || params[:room].owner_id == params[:user].id && params[:as_user] 
-          }
-        }
+      block.call collector if block
 
-        register_condition(condition)
-
-        custom(:user_action, &block)
-      end
-
-      def owner_action(&block)
-        condition = { owner_action: -> (params) { params[:room].owner_id == params[:user].id && !params[:as_user] } }
-
-        register_condition(condition)
-
-        custom(:owner_action, &block)
-      end
-    end
-
-    def choise_response(params)
-      collector = Collector.new
-      yield collector if block_given?
       if format = collector.negotiate_format(params)
         response = collector.response
         response.call if response
       else
-        # raise ActionController::UnknownFormat
+        raise ActionController::UnknownFormat
       end
     end
 
     class Collector
-      include ResponseTypes
-
       attr_accessor :format
 
-      def initialize
+      def initialize(response_type)
+        include_response_type response_type
         @responses = {}
         @conditions = []
       end
 
       def custom(response_type, &block)
-        @responses[response_type] ||= if block_given?
-          block
-        end
+        @responses[response_type] ||= block if block_given?
       end
 
       def response
@@ -75,10 +51,15 @@ module ActionController #:nodoc:
 
         @format
       end
-      
+
       def register_condition(condition)
         @conditions << condition
       end
+
+      def include_response_type response_type
+        self.class.include response_type
+      end
     end
+
   end
 end

@@ -17,9 +17,8 @@ class RoomsController < ApplicationController
     show_manager_action.choise_response(response_params_show) do |format|
       format.user_action { return render(action: :room_user) }
       format.owner_action { return render(action: :room_owner_session) }
+      format.default { redirect_to rooms_path }
     end
-
-    redirect_to rooms_path
   end
 
   def vote
@@ -41,6 +40,7 @@ class RoomsController < ApplicationController
 
   def join
     redirect_to(room_path(@invite.session_vote)) if user_is_owner_from_session_vote?
+
     @invite = Invite.find_by_token(params[:token])
     authorize @invite
     if @invite

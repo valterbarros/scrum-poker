@@ -21,6 +21,10 @@ module Services
 
           custom(:owner_action, &block)
         end
+
+        def default(&block)
+          custom(:default, &block)
+        end
       end
     end
   end

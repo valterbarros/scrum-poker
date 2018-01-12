@@ -20,6 +20,8 @@ class RoomsController < ApplicationController
       format.user_action { return render(action: :room_user) }
       format.owner_action { return render(action: :room_owner_session) }
     end
+
+    redirect_to rooms_path
   end
 
   def vote

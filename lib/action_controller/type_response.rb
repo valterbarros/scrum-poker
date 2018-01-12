@@ -42,7 +42,7 @@ module ActionController #:nodoc:
         response = collector.response
         response.call if response
       else
-        raise ActionController::UnknownFormat
+        # raise ActionController::UnknownFormat
       end
     end
 

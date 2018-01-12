@@ -15,13 +15,11 @@ module Services
     def choise_response(params, response_type, &block)
       collector = Collector.new(response_type)
 
-      block.call collector if block
+      block.call collector if block_given?
 
       if format = collector.negotiate_format(params)
         response = collector.response
         response.call if response
-      else
-        raise ActionController::UnknownFormat
       end
     end
 
@@ -49,7 +47,7 @@ module Services
           @format = condition.keys.first if condition.values.first.call(params)
         end
 
-        @format
+        @format ||= :default if @responses.has_key?(:default)
       end
 
       def register_condition(condition)

@@ -54,15 +54,15 @@ describe SessionVote, type:[:models,:session_vote] do
   end
 
   context 'When try close a session' do
-    let(:user) { create :user }
     let(:session_vote) { create :session_vote}
     it 'When try close a session without users and tasks' do
-      close_session = Validators::CloseSessionVote.new
+      close_session = Validators::CloseSessionVote.new(tasks:session_vote.tasks, votes:session_vote.votes)
       expect(
         close_session.valid?
-      ).to be false
+      ).to be true
     end
 
+    let(:user) { create :user }
     let(:session_vote) { create :session_vote, tasks: [task], users: [] }
     it 'When try close a session without user' do
       close_session = Validators::CloseSessionVote.new(tasks:session_vote.tasks, votes:session_vote.votes)

@@ -15,7 +15,7 @@ module Validators
     attr_accessor :status, :users, :session_vote
 
     def session_closed
-      self.errors.add(:session_vote, "Can't add user on session closed") if @status == ::SessionVote.statuses[:finish]
+      self.errors.add(:session_vote, "Can't add user on session closed") if @status == session_vote_finish
     end
 
     def session_vote_finish

@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: session_votes
+#
+#  id         :integer          not null, primary key
+#  status     :integer          default("in_progress")
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class SessionVote < ApplicationRecord
   has_many :votes
   has_many :tasks

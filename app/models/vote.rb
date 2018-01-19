@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: votes
+#
+#  id              :integer          not null, primary key
+#  score           :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  session_vote_id :integer
+#  user_id         :integer
+#  task_id         :integer
+#
+# Indexes
+#
+#  index_votes_on_session_vote_id  (session_vote_id)
+#  index_votes_on_task_id          (task_id)
+#  index_votes_on_user_id          (user_id)
+#
+
 class Vote < ApplicationRecord
   attr_accessor :step_position
 

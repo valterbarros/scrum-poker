@@ -4,14 +4,15 @@ describe TasksController, '#create' , type: [:controller,:task]  do
   let(:setup) {  }
   let(:user) { create(:user) }
   let(:title) { "Some Title" }
+  let(:task) { create :task}
+
   before do
     setup
     sign_in user
-    post :create, { task_params: { title: title, description: "permitindo" } }
+    post :create, { params: { task_params: { title: task.title, description: task.description} } }
   end
 
   context 'When try create a already created task' do
-    let(:task) { create :task, title: title }
     let(:setup) { task }
     it 'Should render new view' do
       expect(response).to render_template("new")

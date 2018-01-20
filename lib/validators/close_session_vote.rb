@@ -4,11 +4,11 @@ module Validators
   class CloseSessionVote
     include ActiveModel::Validations
     validate :can_close_session_vote
-    
+
     def initialize attrs = {}
       @users = attrs[:users]
       @tasks = attrs[:tasks]
-      @votes = attrs[:votes] 
+      @votes = attrs[:votes]
     end
 
     private

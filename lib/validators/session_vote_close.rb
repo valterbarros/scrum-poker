@@ -12,7 +12,7 @@ module Validators
     end
 
     private
-   
+
     attr_reader :users, :closed, :session_vote
 
     def session_vote_closed

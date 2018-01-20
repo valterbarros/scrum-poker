@@ -1,3 +1,0 @@
-class SessionVotesController < ApplicationController
-
-end

@@ -1,4 +1,4 @@
-class RoomsChannel < ApplicationCable::Channel
+class VotesChannel < ApplicationCable::Channel
   def follow(room_id)
     stop_all_streams
     stream_from "rooms:#{room_id["room_id"]}"

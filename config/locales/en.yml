@@ -22,3 +22,7 @@
 en:
   hello: "Hello world"
   cant_add_user_to_session_vote: "Can't add user on session closed" 
+  pundit:
+    default: 'You cannot perform this action'
+    invite_policy:
+      join?: 'You cannot enter in this room'

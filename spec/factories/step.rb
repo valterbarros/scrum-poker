@@ -1,7 +1,7 @@
 FactoryGirl.define do
-  factory :task do
-    title "Fix test errors"
-    description "cadastrar task"
+
+  factory :step do
+    title '1'
     session_vote { FactoryGirl.create(:session_vote) }
   end
 end

@@ -6,7 +6,7 @@ App.participant_users = App.cable.subscriptions.create "ParticipantUsersChannel"
     @installPageChangeCallback()
 
   received: (data) -> 
-    App.management_room.new_user(data) if App.management_room.currentUserIsOwnerFromRoom()
+    App.management_room.new_user(data['user']) if App.management_room.currentUserIsOwnerFromRoom()
 
   followCurrentChannel: ->
     if room_id = @collection().data('roomId')

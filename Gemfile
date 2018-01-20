@@ -49,6 +49,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'dotenv-rails'
   gem 'database_cleaner'
+  gem "pundit"
 end
 
 group :development do

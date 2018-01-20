@@ -5,11 +5,16 @@ class InvitesController < ApplicationController
     if @invite.save
       @notification = Notification.new(
         title: "You are invited for a new session by #{current_user.name}",
-        body: "Do you want accept the invite?",
-        user_id: invite_params[:recipient_id]
-      )
-      @notification.save
+        body: "Do you wanna accept the invite?",
+        user_id: invite_params[:recipient_id],
+        url: join_rooms_path(@invite.token)
+      ).save
+
+      params[:id] = @invite.session_vote_id
+      @invite = Invite.new
+      @users_for_invite = Queries::QueryUserForInvite.new({id:params[:id]}).fetch_result  
     end
+
   end
   
   private

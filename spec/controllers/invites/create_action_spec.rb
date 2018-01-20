@@ -14,7 +14,7 @@ describe InvitesController, type: [:controller, :invite] do
     }
   end
 
-  let(:action) { post :create, params: params }
+  let(:action) { post :create, params: params, xhr: true }
 
   before do
     sign_in user

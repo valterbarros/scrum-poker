@@ -7,4 +7,4 @@ class @SetCallbackPageChangeChannel
   installPageChangeCallback = ->
     unless @installedPageChangeCallback
       @installedPageChangeCallback = true
-      $(document).on 'turbolinks:load', (-> @channel.followCurrentRoom()).bind(@)
+      @channel.followCurrentRoom()

@@ -1,4 +1,10 @@
 class @ChangeTaskChannel
+  #singleton methods
+  instance = null
+
+  @get_instance: ->
+    instance ?= new ChangeTaskChannel()
+
   @CALLBACK = ''
 
   constructor: ->
@@ -8,7 +14,8 @@ class @ChangeTaskChannel
         ChangeTaskChannel.CALLBACK.call(null, data) if ChangeTaskChannel.CALLBACK
 
   followCurrentRoom: ->
-    if @room_id
-      @change_task.perform 'folow', room_id: @room_id
+    if room_id = @room_id.data('roomId')
+      @change_task.perform 'follow', room_id: room_id
     else
       @change_task.perform 'unfollow'
+

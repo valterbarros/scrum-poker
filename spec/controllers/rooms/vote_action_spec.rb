@@ -7,13 +7,19 @@ describe RoomsController, '#vote', type:[:controller, :room] do
   let(:step) { create(:step)}
   let(:session_vote) { create(:session_vote) }
 
+  let(:params) do
+    {
+      vote: { id: session_vote.id, card_id: card.id, task_id: task.id, step_id: step.id, step_position: 0 }
+    }
+  end
+
   before do
     session_vote
     sign_in user
     action
   end
 
-  let(:action) { get :vote, params: {id: session_vote.id, card_id: card.id, task_id: task.id, step_id: step.id }, xhr: true }
+  let(:action) { get :vote, params: params, xhr: true }
 
   context 'When user access #vote with valid params' do
     it 'should return status 200' do
@@ -26,7 +32,7 @@ describe RoomsController, '#vote', type:[:controller, :room] do
 
     it "creates a new vote" do
       expect{
-        get :vote, params:{ id: session_vote.id, card_id: card.id, task_id: task.id, step_id: step.id }, xhr:true
+        get :vote, params: params, xhr:true
       }.to change(Vote, :count).by(1)
     end
   end

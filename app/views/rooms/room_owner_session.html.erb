@@ -1,6 +1,6 @@
 <%- count_steps = @steps.count %>
 <div class="page-header" data-channel="rooms" data-room-id="<%= @session_vote.id %>" data-owner-room-id="<%= @session_vote.owner_id %>">
-  <h1 class="title">Task: <%= @session_vote.title %> <small>Session Vote</small> </h1>
+    <h1 class="title">Task: <%= @session_vote.tasks.try(:first).try(:title) %> </h1>
   <a class="button pull-right btn btn-default" href="<%= room_path(@session_vote.id, as_user: 1)%>">See as User</a>
 </div>
 
@@ -42,11 +42,19 @@
 <div class='row'>
   <%= render partial: 'rooms/components/invites_section', 
     locals: { invite: @invite, users_for_invite: @users_for_invite }  %>
-
-  <div class='list-group col-md-6 change-task'>
-    <% @session_vote.tasks.each_with_index do |task, index|  %>
-      <%= link_to task.title, 'javascript:void(0)', class: 'list-group-item item', data: { id: task.id } %>
-    <% end %>
+  <div class='col-md-6'>
+    <div class="panel panel-default">
+      <div class="panel-heading">Change current task from room</div>
+        <div class="panel-body">
+          <div class='list-group change-task'>
+            <% @session_vote.tasks.each_with_index do |task, index|  %>
+              <%= link_to task.title, 'javascript:void(0)', class: 'list-group-item item', data: { id: task.id } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
 

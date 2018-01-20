@@ -45,7 +45,7 @@
 
   <div class='list-group col-md-6 change-task'>
     <% @session_vote.tasks.each_with_index do |task, index|  %>
-      <a href='javascript:void(0)' id="item<%= index %>" class="list-group-item item"><%= task.title %></a>
+      <%= link_to task.title, 'javascript:void(0)', class: 'list-group-item item', data: { id: task.id } %>
     <% end %>
   </div>
 </div>

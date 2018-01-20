@@ -15,7 +15,6 @@ class @ChangeTaskChannel
     instance ?= new ChangeTaskChannel()
 
   followCurrentRoom: ->
-    console.log @room_id()
     if room_id = @room_id()
       @change_task.perform 'follow', room_id: room_id
     else
@@ -23,5 +22,4 @@ class @ChangeTaskChannel
 
   changeTask: (data) ->
     data['room_id'] = @room_id()
-    console.log data
     @change_task.perform 'change_task', data: data

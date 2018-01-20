@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   end
 
   resources :rooms, only: [:index, :show] do
-    member do
-      post 'vote/:card_id/task/:task_id/step/:step_id', to: 'rooms#vote', as: :vote
+    collection do
+      post 'vote'
     end
     collection do
       get 'join/:token', to: 'rooms#join', as: :join

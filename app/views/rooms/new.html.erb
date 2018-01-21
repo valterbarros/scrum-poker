@@ -1,0 +1,20 @@
+<div class='new-room'>
+  <h1>Create a new Room</h1>
+
+  <%= form_with url: rooms_path, scope: :room, method: :post, id: 'room_form' do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+    <div id='task_inputs'></div>
+  <% end %>
+
+  <hr />
+
+  <div class='form-group'>
+    <%= link_to 'Add Task', 'javascript:void(0)', 
+      class: 'btn btn-primary', id: 'add_new_task', data: { target: '#new_task_form' } %>
+  </div>
+
+  <%= form_with id: 'new_task_form', class: 'form-group' do |f| end %>
+
+  <%= link_to 'Save', 'javascript:void(0)', id: 'submit_new_room', data: { target: '#room_form' } %>
+</div>

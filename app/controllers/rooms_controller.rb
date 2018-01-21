@@ -21,6 +21,14 @@ class RoomsController < ApplicationController
     end
   end
 
+  def new
+
+  end
+
+  def create
+    require 'pry'; binding.pry
+  end
+
   def vote
     @card = Card.find(params[:card_id])
     @session_vote = SessionVote.find(params[:id])
@@ -75,5 +83,9 @@ class RoomsController < ApplicationController
 
   def set_session_vote
     @session_vote = SessionVote.find(params[:id])
+  end
+
+  def room_params
+    params.require(:room).permit(:title, tasks_attributes: [:title, :id])
   end
 end

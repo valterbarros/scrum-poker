@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
-  resources :rooms, only: [:index, :show] do
+  resources :rooms, only: [:index, :show, :new, :create] do
     member do
       post 'vote/:card_id/task/:task_id/step/:step_id', to: 'rooms#vote', as: :vote
     end

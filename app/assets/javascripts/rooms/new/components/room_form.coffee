@@ -9,11 +9,15 @@ class @RoomForm
       $(form).submit()
 
   merge_all_inputs_in_room_form = ->
-    inputs = $('#new_task_form .task_inputs input')
-    inputs_cloned = inputs.clone()
-    tasks_inputs = pass_text_fields_to_hidden(inputs_cloned)
-
+    task_inputs = $('#new_task_form .task-inputs input')
+    task_inputs_cloned = task_inputs.clone()
+    tasks_inputs = pass_text_fields_to_hidden(task_inputs_cloned)
     $('#room_form #task_inputs').html(tasks_inputs)
+
+    step_inputs = $('#new_step_form .step-inputs input')
+    step_inputs_cloned = step_inputs.clone()
+    steps_inputs = pass_text_fields_to_hidden(step_inputs_cloned)
+    $('#room_form #step_inputs').html(steps_inputs)
 
   pass_text_fields_to_hidden = (inputs) ->
     inputs.each ->

@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
   end
 
   def new
-
+    @users_for_invite = User.all
   end
 
   def create
@@ -86,6 +86,7 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:title, tasks_attributes: [:title, :id])
+    params.require(:room).permit(:title, :self_assign, users_ids: [], 
+                                 tasks_attributes: [:id, :title], steps_attributes: [:id, :title, cards_attributes: [:all_values]])
   end
 end

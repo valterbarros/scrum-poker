@@ -15,8 +15,8 @@ class RoomsController < ApplicationController
     @owner_session = user_is_owner_from_session_vote?
 
     show_manager_action.choise_response(response_params_show) do |format|
-      format.user_action { return render(action: :room_user) }
-      format.owner_action { return render(action: :room_owner_session) }
+      format.user_action { render(action: :room_user) }
+      format.owner_action { render(action: :room_owner_session) }
       format.default { redirect_to rooms_path }
     end
   end

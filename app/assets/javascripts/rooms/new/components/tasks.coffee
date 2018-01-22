@@ -10,7 +10,7 @@ class @Tasks
   task_section_html = ->
     html =  
     """
-      <div class='form-group task_inputs'>
+      <div class='form-group task-inputs'>
         <label for='room_tasks_attributes_title'>Title</label>
         <input type='text' name='room[tasks_attributes][][title]' id='room_tasks_attributes_title' class='form-control'>
       </div>

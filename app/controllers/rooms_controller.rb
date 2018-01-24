@@ -86,7 +86,14 @@ class RoomsController < ApplicationController
   end
 
   def room_params
+    params[:room][:steps_attributes].each do |steps|
+      steps[:cards_attributes].split(',').each do |card|
+        steps[:cards_attributes] = [] if steps[:cards_attributes].is_a?(String)
+        steps[:cards_attributes] << { title: card }
+      end
+    end
+
     params.require(:room).permit(:title, :self_assign, users_ids: [], 
-                                 tasks_attributes: [:id, :title], steps_attributes: [:id, :title, cards_attributes: [:all_values]])
+                                 tasks_attributes: [:id, :title], steps_attributes: [:id, :title, cards_attributes: [:title]])
   end
 end

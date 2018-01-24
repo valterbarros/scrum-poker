@@ -14,7 +14,7 @@ class @StepsSection
           <label for='room_steps_attributes_title'>Title</label>
           <input type='text' name='room[steps_attributes][][title]' id='room_steps_attributes_title' class='form-control'>
           <label for='room_steps_attributes_title'>Cards Values eg: (1,2,3,4,5,6)</label>
-          <input type='text' name='room[steps_attributes][][cards_attributes][][all_values]' id='room_steps_attributes_cards_attributes_all_values' class='form-control'>
+          <input type='text' name='room[steps_attributes][][cards_attributes]' id='room_steps_attributes_cards_attributes_all_values' class='form-control'>
         </div>
       """
 

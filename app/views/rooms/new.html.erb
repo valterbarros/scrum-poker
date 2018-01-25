@@ -3,6 +3,7 @@
 
   <%= form_with url: rooms_path, scope: :room, method: :post, id: 'room_form' do |f| %>
     <div class='row'>
+      <%= hidden_field_tag 'room[owner_id]', current_user.id %>
       <div class='form-group col-md-8'>
         <%= f.label :title %>
         <%= f.text_field :title, class: 'form-control', id: 'room_title' %>

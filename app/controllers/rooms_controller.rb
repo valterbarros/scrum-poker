@@ -93,7 +93,7 @@ class RoomsController < ApplicationController
       end
     end
 
-    params.require(:room).permit(:title, :self_assign, users_ids: [], 
+    params.require(:room).permit(:owner_id, :title, :self_assign, users_ids: [], 
                                  tasks_attributes: [:id, :title], steps_attributes: [:id, :title, cards_attributes: [:title]])
   end
 end

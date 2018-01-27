@@ -23,6 +23,7 @@ module Services
         def self_assign_owner
           return unless params[:self_assign].present?
           @owner.session_vote_id = room.id
+          @owner.save!
         end
 
         def invite_users_to_room

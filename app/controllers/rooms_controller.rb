@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_session_vote, only: [:show]
+  helper_method :user_is_included_on_current_session_vote?
 
   def index
     @session_votes = SessionVote.all
@@ -26,7 +27,10 @@ class RoomsController < ApplicationController
   end
 
   def create
-    require 'pry'; binding.pry
+    s = Services::Rooms::Create::ManagerCreateAction.new room_params
+    s.perform
+
+    redirect_to rooms_path
   end
 
   def vote

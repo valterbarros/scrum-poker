@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_session_vote, only: [:show]
+  helper_method :user_is_included_on_current_session_vote?
 
   def index
     @session_votes = SessionVote.all
@@ -15,10 +16,21 @@ class RoomsController < ApplicationController
     @owner_session = user_is_owner_from_session_vote?
 
     show_manager_action.choise_response(response_params_show) do |format|
-      format.user_action { return render(action: :room_user) }
-      format.owner_action { return render(action: :room_owner_session) }
+      format.user_action { render(action: :room_user) }
+      format.owner_action { render(action: :room_owner_session) }
       format.default { redirect_to rooms_path }
     end
+  end
+
+  def new
+    @users_for_invite = User.all
+  end
+
+  def create
+    s = Services::Rooms::Create::ManagerCreateAction.new room_params
+    s.perform
+
+    redirect_to rooms_path
   end
 
   def vote
@@ -79,5 +91,17 @@ class RoomsController < ApplicationController
 
   def set_session_vote
     @session_vote = SessionVote.find(params[:id])
+  end
+
+  def room_params
+    params[:room][:steps_attributes].each do |steps|
+      steps[:cards_attributes].split(',').each do |card|
+        steps[:cards_attributes] = [] if steps[:cards_attributes].is_a?(String)
+        steps[:cards_attributes] << { title: card }
+      end
+    end
+
+    params.require(:room).permit(:owner_id, :title, :self_assign, users_ids: [], 
+                                 tasks_attributes: [:id, :title], steps_attributes: [:id, :title, cards_attributes: [:title]])
   end
 end

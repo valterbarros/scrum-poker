@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id              :integer          not null, primary key
+#  title           :string
+#  description     :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  session_vote_id :integer
+#
+# Indexes
+#
+#  index_tasks_on_session_vote_id  (session_vote_id)
+#
+
 class Task < ApplicationRecord
   has_many :votes
   belongs_to :session_vote

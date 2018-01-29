@@ -1,0 +1,44 @@
+<div class='new-room'>
+  <h1>Create a new Room</h1>
+
+  <%= form_with url: rooms_path, scope: :room, method: :post, id: 'room_form' do |f| %>
+    <div class='row'>
+      <%= hidden_field_tag 'room[owner_id]', current_user.id %>
+      <div class='form-group col-md-8'>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control', id: 'room_title' %>
+      </div>
+      <div class='form-group col-md-4'>
+        <label for='room_self_assign'>Self assign?</label> <br />
+        <%= check_box_tag 'room[self_assign]', 1, false %>
+      </div>
+    </div>
+
+    <div class='form-group'>
+      <label for='room_users_ids_'>Invite Users for Room</label>
+      <%= select_tag 'room[users_ids][]', 
+        options_from_collection_for_select(@users_for_invite, :id, :name), multiple: true, class: 'form-control' %>
+    </div>
+
+    <div id='task_inputs'></div>
+    <div id='step_inputs'></div>
+  <% end %>
+
+  <hr />
+
+  <div class='form-group'>
+    <%= link_to 'Add Task', 'javascript:void(0)', 
+      class: 'btn btn-primary', id: 'add_new_task', data: { target: '#new_task_section' } %>
+  </div>
+  <div id='new_task_section' class='form-group'></div>
+
+  <hr />
+
+  <div class='form-group'>
+    <%= link_to 'Add Step', 'javascript:void(0)', 
+      class: 'btn btn-primary', id: 'add_new_step', data: { target: '#new_step_section' } %>
+  </div>
+  <div id='new_step_section' class='form-group'></div>
+
+  <%= link_to 'Save', 'javascript:void(0)', id: 'submit_new_room', data: { target: '#room_form' } %>
+</div>

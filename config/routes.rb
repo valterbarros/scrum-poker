@@ -6,10 +6,11 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
-  resources :rooms, only: [:index, :show] do
+  resources :rooms, only: [:index, :show, :new, :create] do
     collection do
       post 'vote'
     end
+
     collection do
       get 'join/:token', to: 'rooms#join', as: :join
     end

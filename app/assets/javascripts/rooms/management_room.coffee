@@ -41,8 +41,8 @@ App.management_room =
 
   all_users_voted: ->
     all_voted = []
-    $('.card-label').each (el) ->
-      all_voted.push(@.voted > 0)
+    $('.card-label').each ->
+      all_voted.push(@.voted != undefined)
     all_voted.every (currentValue) ->
       currentValue == true
 

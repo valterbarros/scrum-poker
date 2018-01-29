@@ -30,13 +30,13 @@ module Services
           return unless params[:users_ids].present?
           params[:users_ids].each do |recipient_id|
             invite = Invite.new(sender_id: params[:owner_id], recipient_id: recipient_id, session_vote: @room)
-            create_notification(recipient_id, invite.token) if invite.save
+            create_notification(recipient_id, invite.token, invite.session_vote.title) if invite.save
           end
         end
 
-        def create_notification recipient_id, token
+        def create_notification recipient_id, token, room_title
           Notification.new(
-            title: "You are invited for a new session by #{@owner.name}",
+            title: "You are invited for a new session by #{@owner.name} for room: #{room_title}",
             body: "Do you wanna accept the invite?",
             user_id: recipient_id,
             url: "/rooms/join/#{token}"

@@ -3,12 +3,12 @@
 # Table name: votes
 #
 #  id              :integer          not null, primary key
-#  score           :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  session_vote_id :integer
 #  user_id         :integer
 #  task_id         :integer
+#  score           :string
 #
 # Indexes
 #

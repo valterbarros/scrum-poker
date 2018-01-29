@@ -4,8 +4,8 @@
 #
 #  id              :integer          not null, primary key
 #  session_vote_id :integer
-#  recipient_id    :integer
-#  sender_id       :integer
+#  recipient_id    :integer          not null
+#  sender_id       :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  token           :string           not null

@@ -34,10 +34,10 @@ class RoomsController < ApplicationController
   end
 
   def vote
-    @card = Card.find(params[:card_id])
-    @session_vote = SessionVote.find(params[:id])
-    @task = Task.find(params[:task_id])
-    @step_position = params[:step_position]
+    @card = Card.find(vote_params[:card_id])
+    @session_vote = SessionVote.find(vote_params[:id])
+    @task = Task.find(vote_params[:task_id])
+    @step_position = vote_params[:step_position]
     @vote = Vote.new(score: @card.title, 
                      session_vote: @session_vote, 
                      user: current_user, 
@@ -64,6 +64,10 @@ class RoomsController < ApplicationController
   end
 
   private
+  def vote_params
+    params.require(:vote).permit(:card_id, :id, :step_id, :task_id, :step_position)
+  end
+
   def show_manager_action
     Services::Rooms::Show::ManagerShowAction.new
   end

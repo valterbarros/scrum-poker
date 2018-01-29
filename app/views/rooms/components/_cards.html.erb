@@ -1,0 +1,23 @@
+<div class="row">
+  <% cards.each_with_index do |card, index|  %>
+
+    <div class="col-lg-2 col-md-3 col-xs-4">
+      <%= form_with url: :vote_rooms, scope: :vote, method: 'post', id: "vote-#{card.id}", remote: true do |f| %>
+        <%= f.hidden_field :card_id, value: card.id  %>
+        <%= f.hidden_field :id, value: session_vote.id  %>
+        <%= f.hidden_field :step_id, value: step.id  %>
+        <%= f.hidden_field :step_position, value: step_position %>
+        <%= f.hidden_field :task_id, value: session_vote.tasks.first.id %>
+      <% end  %>
+      <div class="card-container">
+        <div class="card selectable" id="card-<%= card.id %>">
+          <div class="inner">
+            <%= link_to card.title, 'javascript:void(0)', 
+              class: 'card-label', 
+              data: { target: "#vote-#{card.id}" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end  %>
+</div>

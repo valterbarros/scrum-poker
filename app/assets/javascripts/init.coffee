@@ -1,5 +1,5 @@
 window.App ||= {}
 
 App.init = ->
-  # Steps
   new Steps().init()
+  new SetCallbackPageChangeChannel(ChangeTaskChannel.get_instance())

@@ -1,5 +1,5 @@
 <div class="page-header" data-channel="rooms" data-room-id="<%= @session_vote.id %>" data-owner-room-id="<%= @session_vote.owner_id %>">
-  <h1 class="title"><%= @session_vote.title %> <small>You need click on card to vote!</small> </h1>
+  <h1 class="title">Task: <%= @session_vote.tasks.try(:first).try(:title) %> </h1>
   <% if @owner_session %>
     <a class="button pull-right btn btn-default" href="<%= room_path(@session_vote.id)%>">See as Owner</a>
   <% end %>
@@ -21,7 +21,7 @@
 
 <% @steps.each_with_index do |step, index| %>
   <div class="step-0<%= index %>" style="display:<%= index > 0 ? 'none': 'block'%>">
-    <%= render partial: "cards", 
+    <%= render partial: 'rooms/components/cards', 
                locals: { step_position: index, cards: step.cards, session_vote: @session_vote, step: step }  %>
   </div>
 <% end %>

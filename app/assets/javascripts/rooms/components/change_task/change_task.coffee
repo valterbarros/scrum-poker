@@ -6,6 +6,7 @@ class @ChangeTask
   change_task_callback = (data) ->
     update_task_id_value(data)
     change_task_title(data)
+    remove_confimation_vote()
 
   update_task_id_value = (data) ->
     if inputs = $("[name='vote[task_id]']")
@@ -14,6 +15,9 @@ class @ChangeTask
 
   change_task_title = (data) ->
     $('.page-header .title').html(data['title'])
+
+  remove_confimation_vote = ->
+    $('.card.selectable').removeClass('confirmed')
 
   handler_events: ->
     handle_on_change_task_click.call(@)

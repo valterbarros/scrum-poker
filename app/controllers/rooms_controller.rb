@@ -61,6 +61,9 @@ class RoomsController < ApplicationController
       ParticipantJob.perform_later(current_user, @invite.session_vote.id)
       redirect_to(room_path(@invite.session_vote))
     end
+
+    @invite.destroy
+    Notification.find(params[:notification_id]).destroy
   end
 
   private

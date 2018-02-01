@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  include ::Waterfall
   before_action :set_session_vote, only: [:show]
   helper_method :user_is_included_on_current_session_vote?
 
@@ -55,15 +56,10 @@ class RoomsController < ApplicationController
 
     @invite = Invite.find_by_token(params[:token])
     authorize @invite
-    if @invite
-      current_user.session_vote = @invite.session_vote
-      current_user.save
-      ParticipantJob.perform_later(current_user, @invite.session_vote.id)
-      redirect_to(room_path(@invite.session_vote))
-    end
-
-    @invite.destroy
-    Notification.find(params[:notification_id]).destroy
+    Wf.new
+      .chain{ Services::Rooms::Join::ManagerJoinAction.new(params[:token], params[:notification_id]) }
+      .chain{ redirect_to(room_path(@invite.session_vote)) }
+      .on_dam{ redirect_to room_path }
   end
 
   private

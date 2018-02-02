@@ -5,17 +5,15 @@
   <% end %>
 </div>
 
-<div class="steps-group">
-  <div class="row bs-wizard" style="border-bottom:0;">
-    <% @steps.each_with_index do |step, index|  %>
-      <div class="step-session col-md-<%= 12 / 2 %> bs-wizard-step <%= index > 0 ? '' : 'complete'%>">
-        <div class="text-center bs-wizard-stepnum"><%= step.title %></div>
-        <div class="progress"><div class="progress-bar"></div></div>
-        <a href="javascript:void(0)" active="complete" class="next-step bs-wizard-dot" step="<%= index %>"></a>
-      </div>
-    <% end  %>
-  </div>
-</div>
+<ul class="nav nav-tabs">
+  <% @steps.each_with_index do |step, index|  %>
+    <li class="step-session <%= index == 0 ? 'active' : ''  %>">
+      <a href="javascript:void(0)" active="active" step="<%= index %>" class="next-step">
+        <%= step.title  %>
+      </a>
+    </li>
+  <% end %>
+</ul>
 
 <hr />
 

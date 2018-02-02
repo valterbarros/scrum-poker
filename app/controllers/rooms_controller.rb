@@ -4,7 +4,8 @@ class RoomsController < ApplicationController
   helper_method :user_is_included_on_current_session_vote?
 
   def index
-    @session_votes = SessionVote.all
+    @session_votes = 
+      (SessionVote.where(owner_id: current_user.id) + [current_user.session_vote].compact).uniq
   end
 
   def show
@@ -24,7 +25,7 @@ class RoomsController < ApplicationController
   end
 
   def new
-    @users_for_invite = User.all
+    @users_for_invite = User.all - [current_user]
   end
 
   def create

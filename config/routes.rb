@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :invites, only: [:create] do
     collection do
-      get 'reload'
+      get 'reload_users'
     end
   end
 end

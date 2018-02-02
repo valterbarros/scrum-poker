@@ -1,9 +1,10 @@
 .navbar-default .dropdown-menu.notify-drop {
-  min-width: 330px;
+  max-width: 400px;
   background-color: #fff;
   min-height: 360px;
   max-height: 360px;
-  width: 410px;
+  width: calc(100vw - 25px);
+  margin-left: 5px;
 }
 .navbar-default .dropdown-menu.notify-drop .notify-drop-title {
   border-bottom: 1px solid #e2e2e2;
@@ -65,7 +66,7 @@
   color: #333;
 }
 .navbar-default .dropdown-menu.notify-drop .drop-content > li a {
-  font-size: 12px;
+  font-size: 17px;
   font-weight: normal;
 }
 .navbar-default .dropdown-menu.notify-drop .drop-content > li {

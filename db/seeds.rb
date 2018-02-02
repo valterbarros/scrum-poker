@@ -5,11 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user1 = User.create(name:"Valter")
-user2 = User.create(name: "Van")
-task = Task.create(title:"criar o arquivo seed")
-session_vote = SessionVote.create
-session_vote.tasks = [task, Task.create(title:"hello darkness my old friend")]
-session_vote.users = [user1, user2]
-vote = Vote.create(vote:4, session_vote:session_vote, task:task, user:user1)
-vote = Vote.create(vote:8, session_vote:session_vote, task:task, user:user2)
+def create_user name
+  User.create(name:name, password: '123456', email: "#{name}@gmail.com")
+end
+
+create_user 'livia'
+create_user 'jatoba'
+create_user 'xandi'
+create_user 'gabe'
+create_user 'berta'
+create_user 'maris'
+create_user 'jatoba'
+create_user 'lobao'
+create_user 'diego'
+create_user 'rachid'
+create_user 'valter'
+create_user 'arthur'
+create_user 'danilo'
+create_user 'anderson'
+create_user 'rominie'
+create_user 'lucas'
+create_user 'julio'
+create_user 'denis'

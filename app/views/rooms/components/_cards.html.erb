@@ -1,7 +1,7 @@
 <div class="row">
   <% cards.each_with_index do |card, index|  %>
 
-    <div class="col-lg-2 col-md-3 col-xs-4">
+    <div class="col-lg-2 col-md-3 col-xs-6">
       <%= form_with url: :vote_rooms, scope: :vote, method: 'post', id: "vote-#{card.id}", remote: true do |f| %>
         <%= f.hidden_field :card_id, value: card.id  %>
         <%= f.hidden_field :id, value: session_vote.id  %>

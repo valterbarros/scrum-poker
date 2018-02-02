@@ -9,6 +9,7 @@
     <meta name="current-user" id="<%= current_user.try(:id) %>">
     <meta name="turbolinks-cache-control" content="no-preview">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,7 +25,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Planning of Thrones</a>
+              <a class="navbar-brand" href="<%= rooms_path  %>">Planning of Thrones</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,8 +41,7 @@
                   <ul class="dropdown-menu notify-drop">
                     <div class="notify-drop-title">
                       <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-6">Bildirimler (<b>2</b>)</div>
-                        <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+                        <div class="col-md-6 col-sm-6 col-xs-6"></div>
                       </div>
                     </div>
                     <!-- end notify title -->
@@ -50,9 +50,6 @@
                       <% @notifications.each do |notification| %>
                         <%= render partial: 'layouts/notification_item', locals: { notification: notification }  %>
                       <% end  %>
-                    </div>
-                    <div class="notify-drop-footer text-center">
-                      <a href=""><i class="fa fa-eye"></i> Tümünü Göster</a>
                     </div>
                   </ul>
                 </li>

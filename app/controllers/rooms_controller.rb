@@ -1,9 +1,11 @@
 class RoomsController < ApplicationController
+  include ::Waterfall
   before_action :set_session_vote, only: [:show]
   helper_method :user_is_included_on_current_session_vote?
 
   def index
-    @session_votes = SessionVote.all
+    @session_votes = 
+      (SessionVote.where(owner_id: current_user.id) + [current_user.session_vote].compact).uniq
   end
 
   def show
@@ -23,7 +25,7 @@ class RoomsController < ApplicationController
   end
 
   def new
-    @users_for_invite = User.all
+    @users_for_invite = User.all - [current_user]
   end
 
   def create
@@ -55,12 +57,10 @@ class RoomsController < ApplicationController
 
     @invite = Invite.find_by_token(params[:token])
     authorize @invite
-    if @invite
-      current_user.session_vote = @invite.session_vote
-      current_user.save
-      ParticipantJob.perform_later(current_user, @invite.session_vote.id)
-      redirect_to(room_path(@invite.session_vote))
-    end
+    Wf.new
+      .chain{ Services::Rooms::Join::ManagerJoinAction.new(params[:token], params[:notification_id]) }
+      .chain{ redirect_to(room_path(@invite.session_vote)) }
+      .on_dam{ redirect_to room_path }
   end
 
   private

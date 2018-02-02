@@ -38,6 +38,8 @@ App.management_room =
     card.each ->
       vote_value = @.voted
       $(@).html(vote_value)
+      @.voted = undefined
+    $('.card.selectable').removeClass('confirmed')
 
   all_users_voted: ->
     all_voted = []

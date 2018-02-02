@@ -14,7 +14,13 @@ class InvitesController < ApplicationController
       @invite = Invite.new
       @users_for_invite = Queries::QueryUserForInvite.new({id:params[:id]}).fetch_result  
     end
+    render :reload_users
+  end
 
+  def reload_users
+    @invite = Invite.new
+    @users_for_invite = Queries::QueryUserForInvite.new({id:params[:id]}).fetch_result  
+    render :reload_users
   end
   
   private

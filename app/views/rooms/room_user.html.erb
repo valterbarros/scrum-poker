@@ -1,5 +1,5 @@
 <div class="page-header" data-channel="rooms" data-room-id="<%= @session_vote.id %>" data-owner-room-id="<%= @session_vote.owner_id %>">
-  <h1 class="title">Task: <%= @session_vote.tasks.try(:first).try(:title) %> </h1>
+  <h1 class="title">Task: ... </h1>
   <% if @owner_session %>
     <a class="button pull-right btn btn-default" href="<%= room_path(@session_vote.id)%>">See as Owner</a>
   <% end %>

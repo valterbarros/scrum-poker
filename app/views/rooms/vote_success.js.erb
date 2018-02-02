@@ -3,3 +3,7 @@ var step_position = JSON.parse('<%= raw @step_position  %>')
 $('.step-0' + step_position).find('.selectable').removeClass('confirmed')
 $('.step-0' + step_position).find('.selectable').removeClass('active')
 $("#card-" + card.id).addClass('confirmed')
+
+setTimeout(function(){
+  $('.card.selectable').removeClass('confirmed')
+}, 2000)

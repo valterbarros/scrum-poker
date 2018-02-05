@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :step do
     title '1'
-    session_vote { FactoryGirl.create(:session_vote) }
+    session_vote { FactoryBot.create(:session_vote) }
   end
 end

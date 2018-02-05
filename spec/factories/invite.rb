@@ -1,10 +1,10 @@
-FactoryGirl.define do
-  
+FactoryBot.define do
+
   factory :invite do
     token Digest::SHA1.hexdigest([1, Time.now, 30].join)
-    session_vote { FactoryGirl.create(:session_vote) }
-    recipient { FactoryGirl.create(:user) }
-    sender { FactoryGirl.create(:user) }
+    session_vote { FactoryBot.create(:session_vote) }
+    recipient { FactoryBot.create(:user) }
+    sender { FactoryBot.create(:user) }
   end
 
 end

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :title do |n|
     "Fazer sistema yeah #{n}"
   end

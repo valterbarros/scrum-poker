@@ -7,6 +7,7 @@ class @ChangeTask
     update_task_id_value(data)
     change_task_title(data)
     remove_confimation_vote()
+    free_all_cards_from_users()
 
   update_task_id_value = (data) ->
     if inputs = $("[name='vote[task_id]']")
@@ -19,19 +20,21 @@ class @ChangeTask
   remove_confimation_vote = ->
     $('.card.selectable').removeClass('confirmed')
 
+  free_all_cards_from_users = ->
+    $('.finish-label').hide()
+    $('.page-header').data('room-status', 'in_progress')
+    $('.card.selectable').not('.result').find('.inner').css('background', '#161ec9')
+    $('.card.selectable').not('.result').css('border-color', '#161ec9')
+
   handler_events: ->
     handle_on_change_task_click.call(@)
 
   handle_on_change_task_click = ->
     ctc = @change_task_channel
-    $('.change-task .item').on 'click', ->
-      change_active_class_from_change_task.call(@)
-      task_id = $(@).data('id')
-      ctc.changeTask({ title: @.innerHTML, task_id: task_id })
-
-  change_active_class_from_change_task = ->
-    $('.change-task .item').removeClass('active')
-    $(@).addClass('active')
+    $('.change-task .confirm').on 'click', ->
+      selected = $('.task-select').find('option:selected')
+      if task_id = selected.val()
+        ctc.changeTask({ title: selected.html(), task_id: task_id })
 
 $(document).on 'turbolinks:load', ->
   ct = new ChangeTask(ChangeTaskChannel.get_instance())

@@ -39,10 +39,4 @@
   </div>
 </div>
 
-<div class='row'>
-  <div class='col-md-6'>
-    <%= render partial: 'rooms/components/change_task', locals: { tasks: @session_vote.tasks }  %>
-  </div>
-</div>
-
 <%= render partial: 'rooms/components/finish_votation', locals: { steps: @steps, tasks: @session_vote.tasks } %>

@@ -30,11 +30,11 @@
           <hr />
           <div class='col-md-8'>
             <label for="">Choise a task for new votation</label>
-            <%= select_tag 'task', options_from_collection_for_select(tasks, :id, :title), class: 'selectpicker form-control', data: { live_search: true }  %>
+            <%= select_tag 'task', options_from_collection_for_select(tasks, :id, :title), class: 'selectpicker form-control task-select', data: { live_search: true }  %>
           </div>
 
           <div class='col-md-4 confirm'>
-            <%= link_to 'Start new votation', '#', class: 'btn btn-warning' %>
+            <%= link_to 'Start new votation', 'javascript:void(0)', class: 'btn btn-warning' %>
           </div>
         </div>
       </div>

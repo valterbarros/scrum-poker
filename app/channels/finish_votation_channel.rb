@@ -16,7 +16,7 @@ class FinishVotationChannel < ApplicationCable::Channel
   private
   def close_room id
     s = SessionVote.find(id)
-    s.status = :closed
+    # s.status = :finish
     s.save
   end
 end

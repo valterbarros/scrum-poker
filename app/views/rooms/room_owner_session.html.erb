@@ -1,7 +1,9 @@
 <%- count_steps = @steps.count %>
 <div class="page-header" data-channel="rooms" data-room-id="<%= @session_vote.id %>" data-owner-room-id="<%= @session_vote.owner_id %>">
-  <h1 class="room-title">Room: 
-    <%= @session_vote.title %> <%= link_to 'Finish Votation', 'javascript:void(0)', id: 'finish_votation', class: 'btn btn-default' %> 
+  <h1 class="room-title">
+    Room: 
+    <%= @session_vote.title %> 
+    <%= link_to 'Finish Votation', '#', id: 'finish_votation', class: 'btn btn-danger', data: { toggle: 'modal', target: '#finish_votation_modal' } %> 
   </h1>
   
   <h4 class="title">Task: <%= @session_vote.tasks.try(:first).try(:title) %> </h4>
@@ -27,7 +29,7 @@
             <td><%= user.name.capitalize %></td>
             <td>
               <% count_steps.times do |index| %>
-                <span class='steps step-0<%= index %> label label-default' id='user-card-id-<%= user.id  %>'>? </span>
+                <span class='steps step-result-0<%= index %> label label-default' id='user-card-id-<%= user.id  %>'>? </span>
               <% end %>
             </td>
           </tr>
@@ -43,4 +45,4 @@
   </div>
 </div>
 
-<%= render partial: 'rooms/components/start_votation'  %>
+<%= render partial: 'rooms/components/finish_votation', locals: { steps: @steps, tasks: @session_vote.tasks } %>

@@ -45,13 +45,13 @@ App.management_room =
       currentValue == true
 
   build_card_selector: (data) ->
-    ".step-0#{data['step_position']}#user-card-id-#{data['user_id']}"
+    ".step-result-0#{data['step_position']}#user-card-id-#{data['user_id']}"
 
   build_steps: (user_id) ->
     html = ''
     for num in [0..1]
       html += """ 
-        <span class='steps label label-default step-0#{num}' id='user-card-id-#{user_id}'>? </span>
+        <span class='steps label label-default step-result-0#{num}' id='user-card-id-#{user_id}'>? </span>
       """
     return html
 

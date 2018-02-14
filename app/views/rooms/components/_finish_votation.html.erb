@@ -1,0 +1,47 @@
+<div id='finish_votation_modal' class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Votation Result</h4>
+      </div>
+      <div class="modal-body">
+
+        <ul class="nav nav-tabs">
+          <% steps.each_with_index do |step, index|  %>
+            <li class="step-session <%= index == 0 ? 'active' : ''  %>">
+              <a href="javascript:void(0)" active="active" step="<%= index %>" class="next-step">
+                <%= step.title  %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+
+        <% steps.each_with_index do |step, index| %>
+          <div class="step-0<%= index %> row" style="display:<%= index > 0 ? 'none': 'block'%>"> 
+            <hr />
+          </div>
+        <% end %>
+
+
+        <div class='row change-task'>
+          <hr />
+          <div class='col-md-8'>
+            <label for="">Choise a task for new votation</label>
+            <%= select_tag 'task', options_from_collection_for_select(tasks, :id, :title), class: 'selectpicker form-control', data: { live_search: true }  %>
+          </div>
+
+          <div class='col-md-4 confirm'>
+            <%= link_to 'Start new votation', '#', class: 'btn btn-warning' %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

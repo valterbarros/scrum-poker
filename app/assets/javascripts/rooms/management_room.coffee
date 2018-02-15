@@ -15,7 +15,6 @@ App.management_room =
     card.get(0).voted = data['score']
     card.removeClass('label-default')
     card.addClass('label-success')
-    @flip_cards(data) if @all_users_voted()
 
   render_participant_users: (user) ->
     self = @
@@ -33,7 +32,6 @@ App.management_room =
     card.each ->
       vote_value = @.voted
       $(@).html(vote_value)
-      @.voted = undefined
     card.removeClass('label-success')
     card.addClass('label-default')
 

@@ -31,10 +31,17 @@ class @ChangeTask
 
   handle_on_change_task_click = ->
     ctc = @change_task_channel
-    $('.change-task .confirm').on 'click', ->
+    $('#start_votation').on 'click', ->
+      reset_votation()
       selected = $('.task-select').find('option:selected')
       if task_id = selected.val()
         ctc.changeTask({ title: selected.html(), task_id: task_id })
+      $('#start_votation_modal').modal('toggle')
+
+  reset_votation = ->
+    $('span.steps').each ->
+      @.voted = undefined
+      $('.steps').html('?')
 
 $(document).on 'turbolinks:load', ->
   ct = new ChangeTask(ChangeTaskChannel.get_instance())

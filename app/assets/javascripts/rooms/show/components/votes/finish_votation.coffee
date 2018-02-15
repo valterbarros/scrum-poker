@@ -17,13 +17,14 @@ class @FinishVotation
 
   handle_on_finish_click = ->
     fv = @finish_votation_channel
-    $('#finish_votation').on 'click', ->
+    $('#finish_votation').on  'click', ->
       fv.finish()
       remove_all_card_result()
       calculate_result_from_votation()
-      $('span.steps').each ->
-        @.voted = '?' if @.voted == undefined
       App.management_room.flip_cards()
+
+  remove_all_card_result = ->
+    $('.card-result').remove()
 
   calculate_result_from_votation = ->
     for num in [0..1]
@@ -49,21 +50,18 @@ class @FinishVotation
 
     for card in result
       html += """
-        <div class="card-result col-lg-2 col-md-3 col-xs-6">
+        <div class="card-result col-lg-4 col-md-3 col-xs-6">
           <div class="card-container">
             <div class="card selectable result">
               <div class="inner">
-                <a href='#' class='card-label'>#{card}</a>
+                <a href='javascript:void(0)' class='card-label'>#{card}</a>
               </div>
             </div>
           </div>
         </div>
       """
 
-    $(".step-0#{step_number}").append(html)
-
-  remove_all_card_result = ->
-    $('.card-result').remove()
+    $(".step-0#{step_number}").html(html)
 
 $(document).on 'turbolinks:load', ->
   fv = new FinishVotation(FinishVotationChannel.get_instance())

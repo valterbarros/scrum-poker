@@ -1,5 +1,10 @@
 <%- count_steps = @steps.count %>
-<div class="page-header" data-channel="rooms" data-room-id="<%= @session_vote.id %>" data-owner-room-id="<%= @session_vote.owner_id %>">
+<div class="page-header" 
+                  data-channel="rooms" 
+                  data-room-id="<%= @session_vote.id %>" 
+                  data-owner-room-id="<%= @session_vote.owner_id %>"
+                  data-room-status='<%= @session_vote.status %>'>
+
   <h1 class="room-title">
     Room: 
     <%= @session_vote.title %> 
@@ -7,8 +12,9 @@
     <%= link_to 'New Votation', '#', class: 'btn btn-primary', data: { toggle: 'modal', target: '#start_votation_modal' } %> 
   </h1>
 
-  <h4 class="title">Task: <%= @session_vote.tasks.try(:first).try(:title) %> </h4>
-  <%= link_to 'See as User', room_path(@session_vote.id, as_user:1), class: 'button pull-right btn btn-default' if user_is_included_on_current_session_vote? %>
+  <h4 class="title">Task: - </h4> <span class='finish-label label label-warning' style='display:none;'>Finished</span>
+  <%= link_to 'See as User', room_path(@session_vote.id, as_user:1), class: 'button pull-right btn btn-default', target: '_blank' \
+    if user_is_included_on_current_session_vote? %>
 </div>
 
 <br />

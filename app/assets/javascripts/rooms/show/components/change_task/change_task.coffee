@@ -3,6 +3,9 @@ class @ChangeTask
     @change_task_channel = change_task_channel
     ChangeTaskChannel.CALLBACK = change_task_callback
 
+  init: ->
+    $('.task-select').selectpicker();
+
   change_task_callback = (data) ->
     update_task_id_value(data)
     change_task_title(data)
@@ -32,8 +35,10 @@ class @ChangeTask
   handle_on_change_task_click = ->
     ctc = @change_task_channel
     $('#start_votation').on 'click', ->
+      remove_select_from_select_task()
       reset_votation()
       selected = $('.task-select').find('option:selected')
+      $('.task-select')
       if task_id = selected.val()
         ctc.changeTask({ title: selected.html(), task_id: task_id })
       $('#start_votation_modal').modal('toggle')
@@ -43,7 +48,12 @@ class @ChangeTask
       @.voted = undefined
       $('.steps').html('?')
 
+  remove_select_from_select_task = ->
+    $('.task-select').val('')
+    $('.filter-option').html('Nothing Selected')
+    $('.dropdown-menu .inner li').removeClass('selected')
+
 $(document).on 'turbolinks:load', ->
-  $('.task-select').selectpicker();
   ct = new ChangeTask(ChangeTaskChannel.get_instance())
+  ct.init()
   ct.handler_events()

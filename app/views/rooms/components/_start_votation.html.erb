@@ -12,7 +12,10 @@
         <div class='row change-task'>
           <div class='col-md-12'>
             <label for="">Choise a task for new votation</label>
-            <%= select_tag 'task', options_from_collection_for_select(tasks, :id, :title), class: 'selectpicker form-control task-select', data: { live_search: true }  %>
+            <%= select_tag 'task', options_from_collection_for_select(tasks, :id, :title), 
+                            include_blank: true,
+                            class: 'selectpicker form-control task-select', 
+                            data: { live_search: true }  %>
           </div>
         </div>
 

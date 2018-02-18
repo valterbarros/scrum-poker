@@ -44,5 +44,6 @@ class @ChangeTask
       $('.steps').html('?')
 
 $(document).on 'turbolinks:load', ->
+  $('.task-select').selectpicker();
   ct = new ChangeTask(ChangeTaskChannel.get_instance())
   ct.handler_events()

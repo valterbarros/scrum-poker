@@ -6,7 +6,7 @@
 
 ## Dependencies
 
-* Ruby version 2.4.2
+* Ruby version 2.5.0
 * Rails version 5.1
 * Postgres >= 9.5
 

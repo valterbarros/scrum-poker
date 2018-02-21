@@ -8,7 +8,7 @@ end
 gem 'waterfall'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
-gem 'devise'
+gem 'devise', '~> 4.4.1'
 gem 'redis', '3.3.3'
 gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

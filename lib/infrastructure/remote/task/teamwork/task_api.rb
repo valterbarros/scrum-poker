@@ -10,7 +10,7 @@ module Infrastructure
           def all_by(project_id:)
             action = "https://rogalabs.teamwork.com/tasklists/#{project_id}/tasks.json"
             r = JSON.parse(HTTP
-              .headers('Authorization': 'Basic dHdwX2FLRkZKUkk1eHB1eFFOdFJTQXJrb1Z5aDFRSG86')
+              .headers('Authorization': "Basic #{token}")
               .get(action).body)['todo-items'][0]
 
             Dto::TaskResponse.new(r)

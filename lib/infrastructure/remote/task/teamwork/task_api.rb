@@ -7,11 +7,16 @@ module Infrastructure
       module Teamwork
         class TaskApi
 
+          def initialize(request_api:)
+            @request_api = request_api
+          end
+
           def all_by(project_id:)
             action = "https://rogalabs.teamwork.com/tasklists/#{project_id}/tasks.json"
             r = JSON.parse(HTTP
-              .headers('Authorization': "Basic #{token}")
+              .headers(@request_api.headers)
               .get(action).body)['todo-items'][0]
+              #.headers('Authorization': "Basic #{token}")
 
             Dto::TaskResponse.new(r)
           end

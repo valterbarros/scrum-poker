@@ -9,6 +9,11 @@ module Injections
       Adapter.new(:teamwork, url_base, token, key)
     end
 
+
+    def provide_project_repo(adapter:)
+      PROJECT_REPO[adapter.name].call(adapter)
+    end
+
     def provide_task_repo(adapter:)
       TASK_REPO[adapter.name].call(adapter)
     end
@@ -20,6 +25,10 @@ module Injections
     REQUESTS = {
       teamwork: -> (adapter) { RequestApi.new(adapter.url_base, {}, {}, adapter.token) },
       trello:   -> (adapter) { RequestApi.new(adapter.url_base, {}, "key=#{adapter.key}&token=#{adapter.token}") }
+    }
+
+    PROJECT_REPO = {
+      teamwork: -> (adapter) { ::Infrastructure::Remote::Project::Teamwork::ProjectApi.new(request_api: REQUESTS[:teamwork].call(adapter)) }
     }
 
     TASK_REPO = {

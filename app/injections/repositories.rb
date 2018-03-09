@@ -14,6 +14,10 @@ module Injections
       PROJECT_REPO[adapter.name].call(adapter)
     end
 
+    def provide_list_repo(adapter:)
+      LIST_REPO[adapter.name].call(adapter)
+    end
+
     def provide_task_repo(adapter:)
       TASK_REPO[adapter.name].call(adapter)
     end
@@ -29,6 +33,10 @@ module Injections
 
     PROJECT_REPO = {
       teamwork: -> (adapter) { ::Infrastructure::Remote::Project::Teamwork::ProjectApi.new(request_api: REQUESTS[:teamwork].call(adapter)) }
+    }
+
+    LIST_REPO = {
+      teamwork: -> (adapter) { ::Infrastructure::Remote::List::Teamwork::ListApi.new(request_api: REQUESTS[:teamwork].call(adapter)) }
     }
 
     TASK_REPO = {

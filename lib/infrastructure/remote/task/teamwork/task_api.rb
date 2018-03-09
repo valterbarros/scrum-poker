@@ -5,8 +5,8 @@ module Infrastructure
         class TaskApi
           include ::Infrastructure::Remote::ApiBase
 
-          def all_by(project_id:)
-            action    = "#{request_api.url_base}/tasklists/#{project_id}/tasks.json"
+          def all_by_project(project_id:)
+            action    = "#{request_api.url_base}/projects/#{project_id}/tasks.json"
             response  = basic_auth.get(action)
             json_body = JSON.parse(response.body)
 
@@ -16,7 +16,19 @@ module Infrastructure
               dto = Dto::TaskResponse.new(item)
               ::Domain::Entity::Task.new(dto.entity_attributes)
             end
+          end
 
+          def all_by_list(list_id:)
+            action    = "#{request_api.url_base}/tasklists/#{list_id}/tasks.json"
+            response  = basic_auth.get(action)
+            json_body = JSON.parse(response.body)
+
+            todo_items = json_body.fetch('todo-items', [])
+
+            todo_items.map do |item|
+              dto = Dto::TaskResponse.new(item)
+              ::Domain::Entity::Task.new(dto.entity_attributes)
+            end
           end
 
           private

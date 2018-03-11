@@ -1,10 +1,12 @@
 module Domain
   module Entity
-    class Task
+    class List
       include ::Domain::Entity::Base
 
-      attr_reader :id, :title, :description
+      attr_reader :id, :name, :description
 
     end
   end
 end
+
+

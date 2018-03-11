@@ -7,7 +7,7 @@
 ## Dependencies
 
 * Ruby version 2.5.0
-* Rails version 5.1
+* Rails version ~> 5.1
 * Postgres >= 9.5
 
 You must have redis installed and running on the default port:6379 (or configure it in config/redis/cable.yml).

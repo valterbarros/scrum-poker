@@ -1,17 +1,17 @@
 module Infrastructure
   module Remote
-    module Task
+    module List
       module Teamwork
         module Dto
-          class TaskResponse
+          class ListResponse
             include ::Domain::Entity::Base
 
-            attr_reader :id, :content, :description
+            attr_reader :id, :name, :description
 
             def entity_attributes
               {
                 id:          id,
-                title:       content,
+                name:       name,
                 description: description
               }
             end
@@ -22,3 +22,5 @@ module Infrastructure
     end
   end
 end
+
+

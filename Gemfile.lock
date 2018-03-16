@@ -258,7 +258,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   pundit
-  rails (~> 5.1.5)
+  rails (~> 5.1)
   rails-controller-testing
   redis (= 3.3.3)
   rspec-rails (~> 3.5)

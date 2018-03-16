@@ -35,10 +35,9 @@ class @ChangeTask
   handle_on_change_task_click = ->
     ctc = @change_task_channel
     $('#start_votation').on 'click', ->
+      selected = $('select.task-select').find('option:selected')
       remove_select_from_select_task()
       reset_votation()
-      selected = $('.task-select').find('option:selected')
-      $('.task-select')
       if task_id = selected.val()
         ctc.changeTask({ title: selected.html(), task_id: task_id })
       $('#start_votation_modal').modal('toggle')

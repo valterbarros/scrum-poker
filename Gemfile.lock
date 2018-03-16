@@ -229,7 +229,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   database_cleaner
-  devise
+  devise (~> 4.4.1)
   dotenv-rails
   factory_bot
   factory_bot_rails

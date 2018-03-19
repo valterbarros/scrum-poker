@@ -116,3 +116,14 @@
 .navbar-default .dropdown-menu.notify-drop .notify-drop-footer a:hover {
   color: #333;
 }
+
+.notifications-button{
+  list-style: none;
+  position: absolute;
+  top: 1em;
+  padding: 0;
+  left: 1em;
+  .link{
+    color: #333;
+  }
+}

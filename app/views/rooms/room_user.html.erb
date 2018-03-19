@@ -1,6 +1,11 @@
-<div class="page-header" data-channel="rooms" data-room-id="<%= @session_vote.id %>" data-owner-room-id="<%= @session_vote.owner_id %>">
+<div class="page-header" 
+                data-channel="rooms" 
+                data-room-id="<%= @session_vote.id %>" 
+                data-owner-room-id="<%= @session_vote.owner_id %>"
+                data-room-status='<%= @session_vote.status %>'>
+
   <h1 class="room-title">Room: <%= @session_vote.title %> </h1 >
-  <h1 class="title">Task: - </h1>
+  <h4 class="user title">Task: - </h4> <span class='finish-label label label-warning' style='display:none;'>Finished</span>
   <% if @owner_session %>
     <a class="button pull-right btn btn-default" href="<%= room_path(@session_vote.id)%>">See as Owner</a>
   <% end %>

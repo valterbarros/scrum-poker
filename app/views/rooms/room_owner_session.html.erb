@@ -1,52 +1,50 @@
 <%- count_steps = @steps.count %>
-<div class="page-header" data-channel="rooms" data-room-id="<%= @session_vote.id %>" data-owner-room-id="<%= @session_vote.owner_id %>">
-  <h1 class="room-title">Room: <%= @session_vote.title %> <%= link_to 'Finish Votation', 'javascript:void(0)', id: 'finish_votation' %> </h1>
-  <h4 class="title">Task: <%= @session_vote.tasks.try(:first).try(:title) %> </h4>
-  <%= link_to 'See as User', room_path(@session_vote.id, as_user:1), class: 'button pull-right btn btn-default' if user_is_included_on_current_session_vote? %>
-</div>
+<div class="page-header" 
+                  data-channel="rooms" 
+                  data-room-id="<%= @session_vote.id %>" 
+                  data-owner-room-id="<%= @session_vote.owner_id %>"
+                  data-room-status='<%= @session_vote.status %>'>
 
-<ul class="nav nav-tabs">
-  <li class="active step-session">
-    <a href="javascript:void(0)" step="0" active="active" class="next-step">
-      <%= @steps.shift.title  %>
-    </a>
-  </li>
-  <% @steps.each_with_index do |step, index|  %>
-    <li class="step-session">
-      <a href="javascript:void(0)" active="active" step="<%= index + 1 %>" class="next-step">
-        <%= step.title  %>
-      </a>
-    </li>
-  <% end %>
-</ul>
+  <h1 class="room-title">
+    Room: 
+    <%= @session_vote.title %> 
+    <%= link_to 'Finish Votation', '#', class: 'btn btn-danger', id: 'finish_votation', data: { toggle: 'modal', target: '#finish_votation_modal' } %> 
+    <%= link_to 'New Votation', '#', class: 'btn btn-primary', data: { toggle: 'modal', target: '#start_votation_modal' } %> 
+  </h1>
+
+  <h4 class="title">Task: - </h4> <span class='finish-label label label-warning' style='display:none;'>Finished</span>
+  <%= link_to 'See as User', room_path(@session_vote.id, as_user:1), class: 'button pull-right btn btn-default', target: '_blank' \
+    if user_is_included_on_current_session_vote? %>
+</div>
 
 <br />
-
-<div class="row">
-  <% count_steps.times do |index| %>
-    <div class="step-0<%= index %>" style="display:<%= index > 0 ? 'none': 'block'%>">
-      <% @users.each do |user|  %>
-        <div class="col-lg-2 col-md-3 col-xs-4">
-          <div class="card-container">
-            <h4><%= user.name.capitalize  %></h4>
-            <div class="card selectable">
-              <div class="inner">
-                <a id="user-card-id-<%=user.id%>" class="card-label">?</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
 <div class='row'>
   <%= render partial: 'rooms/components/invites_section', 
     locals: { invite: @invite, users_for_invite: @users_for_invite }  %>
 
   <div class='col-md-6'>
-    <%= render partial: 'rooms/components/change_task', locals: { tasks: @session_vote.tasks }  %>
+    <table class='table tasks-votation'>
+      <thead>
+        <tr>
+          <th>Users</th>
+          <th><%= @steps.map(&:title).join('/') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user|  %>
+          <tr>
+            <td><%= user.name.capitalize %></td>
+            <td>
+              <% count_steps.times do |index| %>
+                <span class='steps step-result-0<%= index %> label label-default' id='user-card-id-<%= user.id  %>'>? </span>
+              <% end %>
+            </td>
+          </tr>
+        <% end  %>
+      </tbody>
+    </table>
   </div>
 </div>
 
+<%= render partial: 'rooms/components/finish_votation', locals: { steps: @steps } %>
+<%= render partial: 'rooms/components/start_votation', locals: { tasks: @session_vote.tasks } %>

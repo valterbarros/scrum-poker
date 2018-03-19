@@ -5,13 +5,7 @@ class @VotesForm
   handle_on_vote_click = ->
     $('.inner .card-label').on 'click', ->
       target = $(@).data('target')
-      $(target).submit()
-      setTimeToRemoveConfirmedClass.call(@)
-
-  setTimeToRemoveConfirmedClass = ->
-    setTimeout ( -> 
-      $(@).parents('.card.selectable').removeClass('confirmed')
-    ).bind(@), 2000
+      $(target).submit() unless $('.page-header').data('room-status') == 'finish'
 
 $(document).on 'turbolinks:load', ->
   new VotesForm().handler_events()

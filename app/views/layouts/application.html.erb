@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Planning of Thrones</title>
+    <title>ScrumPoker</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -39,8 +39,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-6"></div>
                       </div>
                     </div>
-                    <!-- end notify title -->
-                    <!-- notify content -->
+
                     <div class="drop-content notification-items">
                       <% @notifications.each do |notification| %>
                         <%= render partial: 'layouts/notification_item', locals: { notification: notification }  %>
@@ -49,15 +48,23 @@
                   </ul>
                 </li>
               </ul>
+
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav visible-xs">
+                <li><a href="<%= rooms_path  %>">Planning of Thrones</a></li>
+              </ul>
+
               <ul class="nav navbar-nav">
                 <li><a href="<%= rooms_path  %>">Rooms</a></li>
               </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
+
+              <ul class="nav navbar-nav">
+                <li><%= link_to "Logout | #{current_user.name.try(:titleize)}", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
+          </div>
         </nav>
       </div>
     </div>

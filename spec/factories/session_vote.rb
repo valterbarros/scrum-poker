@@ -1,9 +1,9 @@
-FactoryGirl.define do
+FactoryBot.define do
   
   factory :session_vote do
-    #tasks {[FactoryGirl.create(:task)]}
-    #users {[FactoryGirl.create(:user)]}
-    owner { FactoryGirl.create(:user) }
+    #tasks {[FactoryBot.create(:task)]}
+    #users {[FactoryBot.create(:user)]}
+    owner { FactoryBot.create(:user) }
   end
 
 end

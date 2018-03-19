@@ -6,7 +6,7 @@
 
 ## Dependencies
 
-* Ruby version 2.4.2
+* Ruby version 2.5.0
 * Rails version 5.1
 * Postgres >= 9.5
 
@@ -19,7 +19,7 @@ DATABASE_USERNAME='REPLACE WITH YOUR DATA'
 DATABASE_PASSWORD='REPLACE WITH YOUR DATA'
 DATABASE_NAME='planning_of_thrones_development'
 DATABASE_TEST_NAME='planning_of_thrones_test'
-DATABASE_PORT=5433
+DATABASE_PORT=5432
 ```
 
 ### Installing Redis

@@ -23,6 +23,6 @@ class SessionVote < ApplicationRecord
 
   belongs_to :owner, class_name: 'User'
 
-  enum status: [ :in_progress, :finish ]
+  enum status: [ :in_progress, :finish, :closed ]
   accepts_nested_attributes_for :tasks, :steps
 end

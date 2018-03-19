@@ -8,7 +8,7 @@ end
 gem 'waterfall'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
-gem 'devise'
+gem 'devise', '~> 4.4.1'
 gem 'redis', '3.3.3'
 gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -44,8 +44,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
-  gem 'factory_girl_rails'
-  gem 'factory_girl'
+  gem 'factory_bot_rails'
+  gem 'factory_bot'
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'dotenv-rails'

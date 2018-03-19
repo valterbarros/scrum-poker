@@ -2,11 +2,19 @@
   .title{
     display: inline-block;
   }
-  .button{
-    margin-top: 20px;
-  }
 }
 
+.tasks-votation{
+  font-size: 2.4rem;
+  .steps{
+    margin-left: 10px;
+  }
+}
+.change-task{
+  .confirm{
+    margin-top: 25px;
+  }
+}
 /*
  * Cards style
  */

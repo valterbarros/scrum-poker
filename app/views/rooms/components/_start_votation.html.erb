@@ -1,0 +1,33 @@
+<div id='start_votation_modal' class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Votation</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class='row change-task'>
+          <div class='col-md-12'>
+            <label for="">Choise a task for new votation</label>
+            <%= select_tag 'task', options_from_collection_for_select(tasks, :id, :title), 
+                            include_blank: true,
+                            class: 'selectpicker form-control task-select', 
+                            data: { live_search: true }  %>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="start_votation" class="btn btn-warning">Start Votation</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+

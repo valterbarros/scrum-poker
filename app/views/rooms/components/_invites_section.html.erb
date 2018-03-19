@@ -6,7 +6,7 @@
         <%= form_with model: @invite, url: :invites, method: :post do |f| %>
           <%= f.hidden_field :session_vote_id, value: params[:id]  %>
           <%= f.label :recipient %>
-          <%= f.collection_select(:recipient_id, @users_for_invite, :id, :email, { prompt: true }, { class: "form-control" } )  %>
+          <%= f.collection_select(:recipient_id, @users_for_invite, :id, :email, { prompt: true }, { class: "form-control" } ) %>
           <hr />
           <%= f.submit 'Send a Invite', class: 'btn btn-success'  %> 
         <% end %>

@@ -39,22 +39,29 @@ class @FinishVotation
       process_result_and_build_cards(frequencies, num)
 
   process_result_and_build_cards = (frequencies, step_number) ->
+    cards = []
+
     max_value = Math.max.apply(null, Object.values(frequencies))
 
-    result = []
+    filter_tasks_by_frequencies_max_value(frequencies, max_value, cards)
+    build_cards(cards, step_number)
+
+  filter_tasks_by_frequencies_max_value = (frequencies, max_value, cards) ->
     for key, value of frequencies
       if value >= max_value
-        result.push key
+        cards.push key
+    cards
 
+  build_cards = (cards, step_number) ->
     html = ''
 
-    for card in result
+    for card in cards
       html += """
         <div class="card-result col-lg-4 col-md-3 col-xs-6">
           <div class="card-container">
             <div class="card selectable result">
               <div class="inner">
-                <a href='javascript:void(0)' class='card-label'>#{card}</a>
+                <a class='card-label'>#{card}</a>
               </div>
             </div>
           </div>
@@ -62,7 +69,3 @@ class @FinishVotation
       """
 
     $(".step-0#{step_number}").html(html)
-
-$(document).on 'turbolinks:load', ->
-  fv = new FinishVotation(FinishVotationChannel.get_instance())
-  fv.handler_events()

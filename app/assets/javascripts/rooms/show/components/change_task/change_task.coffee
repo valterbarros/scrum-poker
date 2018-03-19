@@ -39,7 +39,7 @@ class @ChangeTask
       remove_select_from_select_task()
       reset_votation()
       if task_id = selected.val()
-        ctc.changeTask({ title: selected.html(), task_id: task_id })
+        console.log ctc.changeTask({ title: selected.html(), task_id: task_id })
       $('#start_votation_modal').modal('toggle')
 
   reset_votation = ->
@@ -51,8 +51,3 @@ class @ChangeTask
     $('.task-select').val('')
     $('.filter-option').html('Nothing Selected')
     $('.dropdown-menu .inner li').removeClass('selected')
-
-$(document).on 'turbolinks:load', ->
-  ct = new ChangeTask(ChangeTaskChannel.get_instance())
-  ct.init()
-  ct.handler_events()

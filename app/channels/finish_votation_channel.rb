@@ -9,14 +9,12 @@ class FinishVotationChannel < ApplicationCable::Channel
   end
 
   def finish data
-    raise unless finish_room data['room_id']
+    finish_room data['room_id']
     ActionCable.server.broadcast("finish_votation:#{data['room_id']}", {}) 
   end
 
   private
   def finish_room id
-    s = SessionVote.find(id)
-    s.status = :finish
-    s.save
+    SessionVote.update(id, status: :finish)
   end
 end

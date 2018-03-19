@@ -14,9 +14,7 @@ module Services
 
         def perform
           run_callbacks :perform do
-            @room = SessionVote.new(params.except(:self_assign, :users_ids))
-            @room.status = :finish
-            @room.save!
+            @room = SessionVote.create!(params.except(:self_assign, :users_ids).merge(status: :finish))
           end
         end
 

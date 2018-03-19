@@ -10,7 +10,7 @@ class ChangeTaskChannel < ApplicationCable::Channel
 
   def change_task(data)
     data = data['data']
-    raise unless open_room data['room_id']
+    open_room(data['room_id'])
     title = "Task: #{data['title']}"
     ActionCable.server.broadcast("change_task:#{data['room_id']}", 
                                  { title: title, task_id: data['task_id'] })
@@ -19,8 +19,6 @@ class ChangeTaskChannel < ApplicationCable::Channel
   private
 
   def open_room id
-    s = SessionVote.find(id)
-    s.status = :in_progress
-    s.save
+    SessionVote.update(id, status: :in_progress)
   end
 end

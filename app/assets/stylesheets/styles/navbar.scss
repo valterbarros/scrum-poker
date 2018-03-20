@@ -117,13 +117,18 @@
   color: #333;
 }
 
-.notifications-button{
+.notifications-container{
   list-style: none;
-  position: absolute;
-  top: 1em;
-  padding: 0;
-  left: 1em;
+  padding: 1em 1em 0 0;
   .link{
     color: #777;
   }
+  .dropdown-menu.notify-drop{
+    right: 0;
+    left: auto;
+  }
+}
+
+.navbar-toggle.pull-left{
+  margin-left: 1em;
 }

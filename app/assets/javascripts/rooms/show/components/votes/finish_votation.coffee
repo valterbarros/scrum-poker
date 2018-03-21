@@ -19,8 +19,7 @@ class @FinishVotation
   handle_on_finish_click = ->
     fv = @finish_votation_channel
     $('#finish_votation').on  'click', ->
-      task_id = $('#finish_votation_modal').data('task_id')
-      fv.finish(task_id)
+      fv.finish()
       remove_all_card_result()
       calculate_result_from_votation()
       App.management_room.flip_cards()

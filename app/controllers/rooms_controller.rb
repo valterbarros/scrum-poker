@@ -16,8 +16,10 @@ class RoomsController < ApplicationController
     @users_for_invite = Queries::QueryUserForInvite.new(params).fetch_result  
     @steps = @session_vote.steps.to_a
     @owner_session = user_is_owner_from_session_vote?
-    @current_task = 
-      Task.find_by('session_vote_id = ? AND status = ?', @session_vote.id, Task.statuses[:in_votation]).try(:title) || '-'
+    @current_task = Task
+      .find_by('session_vote_id = ? AND status = ?',
+               @session_vote.id, Task.statuses[:in_votation])
+      .try(:title) || '-'
 
     show_manager_action.choise_response(response_params_show) do |format|
       format.user_action { render(action: :room_user) }

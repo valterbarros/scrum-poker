@@ -9,14 +9,14 @@ class FinishVotationChannel < ApplicationCable::Channel
   end
 
   def finish data
-    change_status_from_task(data['task_id']) if data['task_id'].present?
+    change_status_from_tasks(data['room_id'])
     finish_room data['room_id']
     ActionCable.server.broadcast("finish_votation:#{data['room_id']}", {}) 
   end
 
   private
-  def change_status_from_task task_id
-    Task.update(task_id, status: :normal)
+  def change_status_from_tasks room_id
+    SessionVote.find(room_id).tasks.update_all(status: :normal)
   end
 
   def finish_room id

@@ -8,6 +8,7 @@ class @FinishVotation
 
   block_all_cards_from_users = ->
     $('.finish-label').show()
+    $('.open-label').hide()
     $('.page-header').data('room-status', 'finish')
     $('.card.selectable').not('.confirmed').not('.result').find('.inner').css('background', 'gray')
     $('.card.selectable').not('.result').css('border-color', 'gray')
@@ -45,7 +46,8 @@ class @FinishVotation
 
     filter_tasks_by_frequencies_max_value(frequencies, max_value, cards)
     build_cards(cards, step_number)
-
+    show_revotation_button(cards)
+  
   filter_tasks_by_frequencies_max_value = (frequencies, max_value, cards) ->
     for key, value of frequencies
       if value >= max_value
@@ -69,3 +71,6 @@ class @FinishVotation
       """
 
     $(".step-0#{step_number}").html(html)
+
+  show_revotation_button = (cards) ->
+    $('#revotation').show() if cards.length > 1 

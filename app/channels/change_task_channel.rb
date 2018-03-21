@@ -11,7 +11,7 @@ class ChangeTaskChannel < ApplicationCable::Channel
   def change_task(data)
     data = data['data']
     open_room(data['room_id'])
-    title = "Task: #{data['title']}"
+    title = "Task: #{Task.find(data['task_id']).title}"
     ActionCable.server.broadcast("change_task:#{data['room_id']}", 
                                  { title: title, task_id: data['task_id'] })
   end

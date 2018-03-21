@@ -6,14 +6,16 @@
                   data-room-status='<%= @session_vote.status %>'>
 
   <h1 class="room-title">
-    Room: 
-    <%= @session_vote.title %> 
+    Room: <%= @session_vote.title %> 
     <%= link_to 'Finish Votation', '#', class: 'btn btn-danger', id: 'finish_votation', data: { toggle: 'modal', target: '#finish_votation_modal' } %> 
     <%= link_to 'New Votation', '#', class: 'btn btn-primary', data: { toggle: 'modal', target: '#start_votation_modal' } %> 
   </h1>
 
-  <h4 class="title">Task: - </h4> <span class='finish-label label label-warning' style='display:none;'>Finished</span>
-  <%= link_to 'See as User', room_path(@session_vote.id, as_user:1), class: 'button pull-right btn btn-default', target: '_blank' \
+  <h4 class="title">Task: - </h4> 
+  <span class='finish-label label label-warning' style='display:none;'>Votation Finished</span>
+  <span class='open-label label label-success' style='display:none;'>Votation Open</span>
+
+  <%= link_to 'See as User', room_path(@session_vote.id, as_user: 1), class: 'button pull-right btn btn-default', target: '_blank' \
     if user_is_included_on_current_session_vote? %>
 </div>
 

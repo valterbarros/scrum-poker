@@ -9,6 +9,7 @@ class ChangeTaskChannel < ApplicationCable::Channel
   end
 
   def change_task(data)
+    return unless data["task_id"].present?
     data = data['data']
     change_status_from_task data["task_id"]
     open_room(data['room_id'])

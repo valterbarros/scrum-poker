@@ -25,5 +25,4 @@ class ChangeTaskChannel < ApplicationCable::Channel
   def open_room id
     SessionVote.update(id, status: :in_progress)
   end
-
 end

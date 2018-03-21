@@ -38,7 +38,7 @@ class @ChangeTask
     ctc = @change_task_channel
     $('#start_votation').on 'click', ->
       selected = $('select.task-select').find('option:selected')
-      $('#revotation').data('task_id', selected.val())
+      $('#finish_votation_modal').data('task_id', selected.val())
       remove_select_from_select_task()
       reset_votation()
       if task_id = selected.val()
@@ -58,6 +58,6 @@ class @ChangeTask
   handle_on_revotation_task_cick = ->
     ctc = @change_task_channel
     $('#revotation').on 'click', ->
-      ctc.changeTask({ task_id: $(@).data('task_id') })
+      ctc.changeTask({ task_id: $('#finish_votation_modal').data('task_id') })
       reset_votation()
       $('#finish_votation_modal').modal('toggle')

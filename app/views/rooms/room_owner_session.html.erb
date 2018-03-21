@@ -11,7 +11,7 @@
     <%= link_to 'New Votation', '#', class: 'btn btn-primary', data: { toggle: 'modal', target: '#start_votation_modal' } %> 
   </h1>
 
-  <h4 class="title">Task: - </h4> 
+  <h4 class="user title">Task: <%= @current_task %> </h4> 
   <span class='finish-label label label-warning' style='display:none;'>Votation Finished</span>
   <span class='open-label label label-success' style='display:none;'>Votation Open</span>
 

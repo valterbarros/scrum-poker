@@ -34,7 +34,6 @@ class Vote < ApplicationRecord
   private
 
   def room_status_is_valid?
-    errors.add(:room_id, I18n.t(:room_invalid_status, scope: 'activerecord.errors.vote')) \
-      unless room.in_progress? 
+    errors.add(:room_id, :room_invalid_status) unless room.in_progress? 
   end
 end

@@ -1,3 +1,4 @@
 html = "<%= j render partial: 'rooms/components/invites_section' %>";
 
 $('.invites-container').html(html);
+new AppNotification("<%= I18n.t('rooms.js.user_invited')  %>", 2000).show_success_with_timeout()

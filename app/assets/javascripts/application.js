@@ -17,3 +17,4 @@
 //= require_tree .
 //= require bootstrap-3.3.7/file
 //= require bootstrap-select/file
+//= require noty/lib/noty

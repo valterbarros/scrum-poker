@@ -11,6 +11,7 @@ class @ChangeTask
     change_task_title(data)
     remove_confimation_vote()
     free_all_cards_from_users()
+    show_notification()
 
   update_task_id_value = (data) ->
     if inputs = $("[name='vote[task_id]']")
@@ -30,6 +31,9 @@ class @ChangeTask
     $('.card.selectable').not('.result').find('.inner').css('background', '#161ec9')
     $('.card.selectable').not('.result').css('border-color', '#161ec9')
 
+  show_notification = ->
+    new AppNotification("<%= I18n.t('rooms.js.new_votation') %>", 2000).show_success_with_timeout()
+
   handler_events: ->
     handle_on_change_task_click.call(@)
     handle_on_revotation_task_cick.call(@)
@@ -42,7 +46,7 @@ class @ChangeTask
       remove_select_from_select_task()
       reset_votation()
       if task_id = selected.val()
-        ctc.changeTask({ task_id: task_id })
+        ctc.changeTask(task_id)
       $('#start_votation_modal').modal('toggle')
 
   reset_votation = ->
@@ -58,6 +62,6 @@ class @ChangeTask
   handle_on_revotation_task_cick = ->
     ctc = @change_task_channel
     $('#revotation').on 'click', ->
-      ctc.changeTask({ task_id: $('#finish_votation_modal').data('task_id') })
+      ctc.changeTask($('#finish_votation_modal').data('task_id'))
       reset_votation()
       $('#finish_votation_modal').modal('toggle')

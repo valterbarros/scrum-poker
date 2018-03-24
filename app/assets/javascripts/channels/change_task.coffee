@@ -23,9 +23,8 @@ class @ChangeTaskChannel
       @installedPageChangeCallback = true
       $(document).on 'turbolinks:load', (-> @followCurrentRoom()).bind(@)
 
-  changeTask: (data) ->
-    data['room_id'] = @room_id()
-    @change_task.perform 'change_task', data: data
+  changeTask: (task_id) ->
+    @change_task.perform 'change_task', task_id: task_id, room_id: @room_id()
 
   #singleton methods
   instance = null

@@ -10,7 +10,7 @@
   <span class='open-label label label-success' style='display:none;'>Votation Open</span>
 
   <% if @owner_session %>
-    <a class="button pull-right btn btn-default" href="<%= room_path(@session_vote.id)%>">See as Owner</a>
+    <a class="button pull-right btn btn-default" href="<%= room_path(@session_vote.id)%>" target='_blank'>See as Owner</a>
   <% end %>
 </div>
 

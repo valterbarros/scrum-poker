@@ -5,6 +5,7 @@ class @FinishVotation
 
   @finish_votation_callback: ->
     block_all_cards_from_users()
+    show_notification()
 
   block_all_cards_from_users = ->
     $('.finish-label').show()
@@ -12,6 +13,9 @@ class @FinishVotation
     $('.page-header').data('room-status', 'finish')
     $('.card.selectable').not('.confirmed').not('.result').find('.inner').css('background', 'gray')
     $('.card.selectable').not('.result').css('border-color', 'gray')
+
+  show_notification = ->
+    new AppNotification("<%= I18n.t('rooms.js.finish_votation') %>", 2000).show_success_with_timeout()
 
   handler_events: ->
     handle_on_finish_click.call(@)

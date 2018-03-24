@@ -49,11 +49,11 @@ class RoomsController < ApplicationController
                      user: current_user, 
                      task: @task, 
                      step_position: @step_position)
-    if @vote.save
-      return render :vote_success
-    else
-      return render :vote_fail
-    end
+    Wf.new
+      .when_falsy { @vote.save }
+      .dam { @vote.errors }
+      .chain { render :vote_success and return }
+      .on_dam { render :vote_fail and return }
   end
 
   def join

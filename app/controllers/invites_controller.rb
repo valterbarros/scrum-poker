@@ -13,8 +13,8 @@ class InvitesController < ApplicationController
       params[:id] = @invite.session_vote_id
       @invite = Invite.new
       @users_for_invite = Queries::QueryUserForInvite.new({id:params[:id]}).fetch_result  
+      render :reload_users
     end
-    render :reload_users
   end
 
   def reload_users

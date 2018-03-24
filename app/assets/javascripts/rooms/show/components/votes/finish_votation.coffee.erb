@@ -1,13 +1,13 @@
 class @FinishVotation
   constructor: (finish_votation_channel)->
     @finish_votation_channel = finish_votation_channel 
-    FinishVotationChannel.CALLBACK = FinishVotation.finish_votation_callback
+    FinishVotationChannel.CALLBACK = finish_votation_callback
 
-  @finish_votation_callback: ->
-    block_all_cards_from_users()
+  finish_votation_callback = ->
+    FinishVotation.block_all_cards_from_users()
     show_notification()
 
-  block_all_cards_from_users = ->
+  @block_all_cards_from_users: ->
     $('.finish-label').show()
     $('.open-label').hide()
     $('.page-header').data('room-status', 'finish')

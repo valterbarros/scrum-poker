@@ -22,6 +22,7 @@ class @ChangeTask
     $('.page-header .title').html(data['title'])
 
   remove_confimation_vote = ->
+    $('.card.selectable').removeClass('active')
     $('.card.selectable').removeClass('confirmed')
 
   free_all_cards_from_users = ->

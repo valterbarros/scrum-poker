@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      room:
+        one: Room
+        other: Rooms
+    attributes:
+      room:
+        score: Score

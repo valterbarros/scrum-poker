@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    models:
+      vote:
+        one: Vote
+        other: Votes
+    attributes:
+      vote:
+        score: Score
+    errors:
+      vote:
+        room_invalid_status: Room need be in progress to vote

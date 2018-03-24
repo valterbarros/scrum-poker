@@ -18,7 +18,7 @@ App.management_room =
 
   render_participant_users: (user) ->
     self = @
-    if tasks_votation = document.querySelector('table.tasks-votation')
+    if tasks_votation = document.querySelector('table.js-tasks-votation')
       $(tasks_votation).append(
         """
           <tr>

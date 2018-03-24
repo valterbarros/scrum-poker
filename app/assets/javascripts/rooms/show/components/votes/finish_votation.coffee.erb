@@ -24,10 +24,18 @@ class @FinishVotation
     fv = @finish_votation_channel
     $('#finish_votation').on  'click', ->
       return if $('.page-header').data('room-status') == 'finish' 
+      App.management_room.flip_cards()
+      copy_result_votation_element()
       fv.finish()
       remove_all_card_result()
       calculate_result_from_votation()
-      App.management_room.flip_cards()
+
+  copy_result_votation_element = ->
+    result_html = $('#js_tasks_votation_container').html()
+    $('#js_tasks_votation_on_modal').html(result_html)
+    $('#js_tasks_votation_on_modal').find('span').css('color', 'black')
+    $('#js_tasks_votation_on_modal').find('span').removeClass('label-default')
+    $('#js_tasks_votation_on_modal').find('span').removeClass('label')
 
   remove_all_card_result = ->
     $('.card-result').remove()

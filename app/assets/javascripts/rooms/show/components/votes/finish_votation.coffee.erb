@@ -23,6 +23,7 @@ class @FinishVotation
   handle_on_finish_click = ->
     fv = @finish_votation_channel
     $('#finish_votation').on  'click', ->
+      return if $('.page-header').data('room-status') == 'finish' 
       fv.finish()
       remove_all_card_result()
       calculate_result_from_votation()

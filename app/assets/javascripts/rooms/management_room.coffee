@@ -12,14 +12,14 @@ App.management_room =
 
   mark_card_as_voted: (data) ->
     if card = document.querySelector(@build_card_selector(data))
-      card.get(0).voted = data['score']
-      card.removeClass('label-default')
-      card.addClass('label-success')
+      card.voted = data['score']
+      $(card).removeClass('label-default')
+      $(card).addClass('label-success')
 
   render_participant_users: (user) ->
     self = @
-    if task_votation = document.querySelector('table.tasks-votation')
-      tasks_votation.append(
+    if tasks_votation = document.querySelector('table.tasks-votation')
+      $(tasks_votation).append(
         """
           <tr>
             <td>#{user.name}</td>

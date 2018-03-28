@@ -16,5 +16,9 @@ class @Tasks
       </div>
     """
 
+  handle_add_task_from_teamwork_click = ->
+    $('#js_add_new_task_from_teamwork').on 'click', ->
+      token = $('#token_teamwork').val()
+
 $(document).on 'turbolinks:load', ->
   Tasks.handler_events()

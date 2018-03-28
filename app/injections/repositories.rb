@@ -9,7 +9,6 @@ module Injections
       Adapter.new(:trello, url_base, token, key)
     end
 
-
     def provide_project_repo(adapter:)
       PROJECT_REPO[adapter.name].call(adapter)
     end

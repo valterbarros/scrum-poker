@@ -27,9 +27,34 @@
   <hr />
 
   <div class='form-group'>
-    <%= link_to 'Add Task', 'javascript:void(0)', 
+    <%= link_to t('.add_task'), 'javascript:void(0)', 
       class: 'btn btn-primary', id: 'add_new_task', data: { target: '#new_task_section' } %>
+
+    <%= link_to t('.add_task_from_teamwork'), 'javascript:void(0)',
+      class: 'btn btn-primary', id: 'js_add_new_task_from_teamwork' %>
   </div>
+
+  <div class='js-api-tasks api-tasks'>
+    <div class='form-group'>
+      <div class='col-md-8'>
+        <%= label_tag 'token_teamwork', t('.token')  %>
+        <%= text_field_tag '', '', class: 'form-control', id: 'token_teamwork' %>
+      </div>
+
+      <div class='col-md-4'>
+        <%= link_to t('.find_projects'), 'javascript:void(0)',
+          class: 'btn btn-primary find-projects', id: 'js_find_projects_from_teamwork' %>
+      </div>
+    </div>
+
+    <div class='form-group'>
+      <div class='col-md-8'>
+        <%= label_tag 'projects_teamwork', t('.projects')  %>
+        <%= select_tag '', '', class: 'form-control', id: 'projects_teamwork' %>
+      </div>
+    </div>
+  </div>
+
   <div id='new_task_section' class='form-group'></div>
 
   <hr />

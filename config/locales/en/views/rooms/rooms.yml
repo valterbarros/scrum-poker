@@ -1,0 +1,9 @@
+en:
+  rooms:
+    new:
+      add_task: Add Task
+      add_task_from_teamwork: Add tasks from teamwork
+      token: Token
+      projects: Projects
+      find_projects: Find Projects
+

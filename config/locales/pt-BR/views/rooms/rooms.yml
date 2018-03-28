@@ -1,0 +1,8 @@
+pt-BR:
+  rooms:
+    new:
+      add_task: Adicionar Tarefa
+      add_task_from_teamwork: Adicionar tarefas com teamwork
+      token: Token
+      projects: Projetos
+      find_projects: Buscar Projetos

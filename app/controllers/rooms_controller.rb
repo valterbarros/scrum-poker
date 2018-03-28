@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   include ::Waterfall
+  include ::Injections::Repositories
   before_action :set_session_vote, only: [:show]
   helper_method :user_is_included_on_current_session_vote?
 

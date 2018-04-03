@@ -34,18 +34,23 @@
       class: 'btn btn-primary', id: 'js_add_new_task_from_teamwork' %>
   </div>
 
-  <div class='js-api-tasks api-tasks'>
-    <div class='form-group'>
-      <div class='col-md-8'>
-        <%= label_tag 'token_teamwork', t('.token')  %>
-        <%= text_field_tag '', '', class: 'form-control', id: 'token_teamwork' %>
-      </div>
+<!-- TODO Extract for a partial -->
 
-      <div class='col-md-4'>
-        <%= link_to t('.find_projects'), 'javascript:void(0)',
-          class: 'btn btn-primary find-projects', id: 'js_find_projects_from_teamwork' %>
+  <div class='js-api-tasks api-tasks'>
+    <%= form_with scope: :api_tasks, url: :teamwork_api_v1_projects, method: :get, id: 'team_work_tasks_api_form' do |f| %>
+      <div class='form-group'>
+        <div class='col-md-8'>
+          <%= f.label :token, t('.token'), for: 'token_teamwork' %>
+          <%= f.text_field :token, class: 'form-control', id: 'token_teamwork' %>
+        </div>
+
+        <div class='col-md-4'>
+          <%= link_to t('.find_projects'), 'javascript:void(0)',
+            class: 'btn btn-primary find-projects', id: 'js_find_projects_from_teamwork', 
+            onclick: "$('#team_work_tasks_api_form').submit();" %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <div class='form-group'>
       <div class='col-md-8'>

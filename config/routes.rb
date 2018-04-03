@@ -5,6 +5,16 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :projects, only: [] do
+        collection do
+          get :teamwork
+        end
+      end
+    end
+  end
+
   resources :rooms, only: [:index, :show, :new, :create] do
     collection do
       post 'vote'

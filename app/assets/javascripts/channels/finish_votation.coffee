@@ -23,7 +23,7 @@ class @FinishVotationChannel
       @installedPageChangeCallback = true
       $(document).on 'turbolinks:load', (-> @followCurrentRoom()).bind(@)
 
-  finish: ->
+  finish: () ->
     @finish_votation.perform 'finish', { room_id: @room_id() } 
 
   #singleton methods

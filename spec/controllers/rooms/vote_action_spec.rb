@@ -26,7 +26,7 @@ describe RoomsController, '#vote', type:[:controller, :room] do
       expect(response.status).to be == 200
     end
 
-    it 'should render :save_success' do
+    it 'should render :vote_success' do
       expect(subject).to render_template :vote_success
     end
 
@@ -34,6 +34,29 @@ describe RoomsController, '#vote', type:[:controller, :room] do
       expect{
         get :vote, params: params, xhr:true
       }.to change(Vote, :count).by(1)
+    end
+  end
+
+  context 'When room is not in progress' do
+    let(:room) { create :session_vote, status: :finish }
+    let(:params) do 
+      {
+        vote: { id: room.id, card_id: card.id, task_id: task.id, step_id: step.id, step_position: 0 }
+      }
+    end
+
+    it 'should render :vote_fail' do
+      expect(subject).to render_template :vote_fail
+    end
+
+    it "show dont create a new vote" do
+      expect{
+        get :vote, params: params, xhr:true
+      }.to change(Vote, :count).by(0)
+    end
+
+    it 'Vote error menssage should be eq Room need be in progress to vote' do
+      expect(assigns(:vote).errors.messages[:room_id].join).to eq "Room need be in progress to vote"
     end
   end
 end

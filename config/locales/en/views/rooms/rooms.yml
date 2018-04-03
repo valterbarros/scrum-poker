@@ -1,0 +1,6 @@
+en:
+  rooms:
+    js:
+      new_votation: A new votation was started
+      finish_votation: The votation was finished
+      user_invited: The user was invited with success

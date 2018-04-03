@@ -11,21 +11,22 @@ App.management_room =
     @render_participant_users(user)
 
   mark_card_as_voted: (data) ->
-    card = $(@build_card_selector(data))
-    card.get(0).voted = data['score']
-    card.removeClass('label-default')
-    card.addClass('label-success')
+    if card = document.querySelector(@build_card_selector(data))
+      card.voted = data['score']
+      $(card).removeClass('label-default')
+      $(card).addClass('label-success')
 
   render_participant_users: (user) ->
     self = @
-    $(".tasks-votation").append(
-      """
-        <tr>
-          <td>#{user.name}</td>
-          <td>#{@build_steps(user.id)}</td>    
-        </tr>
+    if tasks_votation = document.querySelector('table.js-tasks-votation')
+      $(tasks_votation).append(
+        """
+          <tr>
+            <td>#{user.name}</td>
+            <td>#{@build_steps(user.id)}</td>    
+          </tr>
 
-      """)
+        """)
 
   flip_cards: (data) ->
     card = $('span.steps')

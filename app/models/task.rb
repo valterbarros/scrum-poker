@@ -8,6 +8,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  session_vote_id :integer
+#  status          :integer          default(0)
 #
 # Indexes
 #
@@ -19,6 +20,5 @@ class Task < ApplicationRecord
   belongs_to :session_vote
 
   has_and_belongs_to_many :categories
-
-  validates :title, uniqueness: true 
+  enum status: [:normal, :in_votation]
 end

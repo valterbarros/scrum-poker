@@ -1,0 +1,28 @@
+{
+  "name": "planning-of-thrones",
+  "version": "1.0.0",
+  "description": "System for vote on tasks from projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valterbarros/scrum-poker.git"
+  },
+  "keywords": [
+    "rails",
+    "ruby",
+    "websockets",
+    "webdevelopment"
+  ],
+  "author": "Valter Barros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valterbarros/scrum-poker/issues"
+  },
+  "homepage": "https://github.com/valterbarros/scrum-poker#readme",
+  "dependencies": {
+    "noty": "^3.2.0-beta"
+  }
+}

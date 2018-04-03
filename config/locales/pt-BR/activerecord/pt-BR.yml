@@ -1,0 +1,6 @@
+pt-BR:
+  hello: Olá mundo
+  pundit:
+    default: Você não pode exexutar essa ação
+    invite_policy:
+      join?: Você não pode entrar nessa sala

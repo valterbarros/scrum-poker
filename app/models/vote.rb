@@ -20,9 +20,20 @@
 class Vote < ApplicationRecord
   attr_accessor :step_position
 
+  alias_attribute :room, :session_vote
+  alias_attribute :room_id, :session_vote_id
+
   belongs_to :session_vote
   belongs_to :task
   belongs_to :user
 
   after_commit { VoteJob.perform_later(self, step_position) }
+
+  validate :room_status_is_valid?
+
+  private
+
+  def room_status_is_valid?
+    errors.add(:room_id, :room_invalid_status) unless room.in_progress? 
+  end
 end

@@ -25,9 +25,14 @@
           <div class="step-0<%= index %> row" style="display:<%= index > 0 ? 'none': 'block'%>"> 
           </div>
         <% end %>
+
+        <hr />
+
+        <div id="js_tasks_votation_on_modal"></div>
       </div>
 
       <div class="modal-footer">
+        <%= link_to 'Revotation', 'javascript:void(0)', class: 'btn btn-warning', style: 'display:none', id: 'revotation' %> 
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

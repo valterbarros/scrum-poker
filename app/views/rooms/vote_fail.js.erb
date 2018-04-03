@@ -1,5 +1,13 @@
+var errors = JSON.parse('<%= raw @vote.errors.messages.to_json %>')
 var card = JSON.parse('<%= raw @card.to_json %>')
 var step_position = JSON.parse('<%= raw @step_position  %>')
-$('.step-0' + step_position).find('.selectable').removeClass('confirmed')
-$('.step-0' + step_position).find('.selectable').removeClass('active')
-$("#card-" + card.id).addClass('active')
+
+function showCardError(){
+  $('.step-0' + step_position).find('.selectable').removeClass('confirmed')
+  $('.step-0' + step_position).find('.selectable').removeClass('active')
+  $("#card-" + card.id).addClass('active')
+}
+
+new AppNotification(errors['room_id'], 2000).show_error_with_timeout()
+FinishVotation.block_all_cards_from_users()
+showCardError()

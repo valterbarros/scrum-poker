@@ -6,3 +6,6 @@ pt-BR:
       token: Token
       projects: Projetos
       find_projects: Buscar Projetos
+    js:
+      new_votation: Uma nova votação foi iniciada
+      finish_votation: A votação foi encerrada

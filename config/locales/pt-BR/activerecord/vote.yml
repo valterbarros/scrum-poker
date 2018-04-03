@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      vote:
+        one: Voto
+        other: Votos
+    attributes:
+      vote:
+        score: Valor
+    errors:
+      models:
+        vote:
+          attributes:
+            room_id:
+              room_invalid_status: A sala precisa estar em progresso

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129012238) do
+ActiveRecord::Schema.define(version: 20180321023804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20180129012238) do
     t.bigint "session_vote_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color"
     t.index ["session_vote_id"], name: "index_steps_on_session_vote_id"
   end
 
@@ -90,6 +91,7 @@ ActiveRecord::Schema.define(version: 20180129012238) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "session_vote_id"
+    t.integer "status", default: 0
     t.index ["session_vote_id"], name: "index_tasks_on_session_vote_id"
   end
 

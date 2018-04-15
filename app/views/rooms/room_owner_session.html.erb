@@ -35,7 +35,7 @@
       <tbody>
         <% @users.each do |user|  %>
           <tr>
-            <td><%= user.name.capitalize %></td>
+            <td><%= user.name.capitalize %> <%= link_to "remove", remove_user_rooms_path(session_vote_id: @session_vote, user_id: user), method: :delete, class: 'btn btn-danger remove_user'%></td>
             <td>
               <% count_steps.times do |index| %>
                 <span class='steps step-result-0<%= index %> label label-default' id='user-card-id-<%= user.id  %>'>? </span>

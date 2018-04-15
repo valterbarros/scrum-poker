@@ -74,8 +74,6 @@ class RoomsController < ApplicationController
       .on_dam{ redirect_to room_path }
   end
   
-  
-
   private
   def vote_params
     params.require(:vote).permit(:card_id, :id, :step_id, :task_id, :step_position)

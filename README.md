@@ -39,9 +39,11 @@ DATABASE_PORT=5432
 
 1. bundle install
 2. rake db:create && rake db:migrate
-3. redis-server
-4. rails s
-5. Visit `http://localhost:3000`
+3. npm install yarn -g
+4. yarn
+5. redis-server
+6. rails s
+7. Visit `http://localhost:3000`
 
 ## Contributing
 ##### Branch name

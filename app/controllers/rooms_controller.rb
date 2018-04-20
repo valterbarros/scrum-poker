@@ -7,6 +7,12 @@ class RoomsController < ApplicationController
     @session_votes = 
       (SessionVote.where(owner_id: current_user.id) + [current_user.session_vote].compact).uniq
   end
+  
+  def remove_user
+    user = User.where(id: params[:user_id]).first
+    session_vote = SessionVote.where(id: params[:session_vote_id]).first
+    session_vote.users.delete(User.find(user.id))
+  end
 
   def show
     set_current_session_vote_id(@session_vote.id)
@@ -66,7 +72,7 @@ class RoomsController < ApplicationController
       .chain{ redirect_to(room_path(@invite.session_vote)) }
       .on_dam{ redirect_to room_path }
   end
-
+  
   private
   def vote_params
     params.require(:vote).permit(:card_id, :id, :step_id, :task_id, :step_position)

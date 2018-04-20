@@ -12,7 +12,6 @@ class RoomsController < ApplicationController
     user = User.where(id: params[:user_id]).first
     session_vote = SessionVote.where(id: params[:session_vote_id]).first
     session_vote.users.delete(User.find(user.id))
-    redirect_to room_path(session_vote)
   end
 
   def show
